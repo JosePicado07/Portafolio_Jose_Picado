@@ -16,21 +16,32 @@ const translations = {
         'nav-contact': 'Contacto',
 
         // Hero Section
-        'hero-title': 'Data Engineer',
-        'hero-tagline': 'Transformando procesos de 6 horas en 45 minutos mediante automatización inteligente y arquitectura escalable',
+        'hero-title': 'Workday Consultant',
+        'hero-tagline': 'Automatización de datos · Pipelines ETL · Migración Workday',
+        'hero-pain-hook': 'Convierto procesos manuales de días en pipelines automáticos de minutos.',
+        'hero-avail': 'Disponible · Respondo en 24h',
         'hero-cta': 'Ver Proyectos',
+        'hero-contact': 'Hablemos',
         'hero-github': 'GitHub',
         'hero-downloadCV': 'Descargar CV',
         'hero-slogan': 'Precision in Process, Power in Performance',
 
         // About Section
         'about-title': 'Sobre Mí',
-        'about-p1': 'Data Engineer con experiencia construyendo pipelines ETL y sistemas de datos en producción. Especializado en optimización de procesamiento a gran escala: reduje sistema de auditoría empresarial de 6 horas a 45 minutos (92% mejora) procesando 500K+ registros.',
-        'about-p2': 'Mi background combina análisis de datos, integración de APIs y diseño de arquitectura escalable. En WWT Costa Rica, desarrollo aplicaciones Python en producción, frameworks de calidad de datos y pipelines automatizados que procesan 350+ flujos de datos concurrentes.',
-        'about-p3': 'Actualmente cursando Ingeniería en Desarrollo de Software en Universidad Cenfotec (60% completado), aplicando aprendizaje continuo para dominar Apache Spark, patrones DDD y arquitectura cloud.',
-        'about-card1': 'Rendimiento',
-        'about-card2': 'Escala',
-        'about-card3': 'Calidad',
+        'about-manifesto': 'Migro datos empresariales a Workday y construyo pipelines ETL escalables — donde los datos siempre llegan limpios.',
+        'dossier-role-label': 'Rol',
+        'dossier-role': 'Consultor Workday · Data Engineer',
+        'dossier-exp-label': 'Experiencia',
+        'dossier-exp': '6 años profesional · 2+ en datos',
+        'dossier-company-label': 'Plataforma',
+        'dossier-location-label': 'Ubicación',
+        'dossier-location': 'Costa Rica — remoto',
+        'dossier-background-label': 'Stack',
+        'dossier-background': 'ETL · Apache Spark · Databricks · OAuth 2.0',
+        'dossier-achievement-label': 'Resultado',
+        'dossier-achievement': '92% reducción latencia · 500K+ registros · proceso de 6h → 45min',
+        'dossier-approach-label': 'Métodos',
+        'dossier-approach': 'Arquitectura escalable · Automatización inteligente · Herramientas IA modernas',
 
         // Projects Section
         'projects-title': 'Proyectos',
@@ -38,7 +49,7 @@ const translations = {
 
         // Project 1
         'project1-title': 'Sistema de Auditoría Empresarial',
-        'project1-desc': 'Automatización de procesamiento de compliance auditando 500K+ registros con reducción del 92% en latencia (6 horas → 45 minutos). Implementé framework de validación de calidad de datos con detección automática de anomalías.',
+        'project1-desc': 'Automatización de auditorías de cumplimiento procesando 500K+ registros con 92% de reducción en tiempo de procesamiento (6 horas → 45 minutos). Sistema de validación de calidad de datos con detección automática de anomalías.',
         'project1-status': 'Producción (2024)',
         'project1-value1': '92%',
         'project1-impact1': 'Reducción tiempo',
@@ -47,7 +58,7 @@ const translations = {
 
         // Project 2
         'project2-title': 'Pipeline ETL SharePoint-to-Power BI',
-        'project2-desc': 'Pipeline de datos incremental end-to-end con autenticación OAuth 2.0, logrando 80% reducción en tiempo de procesamiento. Diseñado para scheduling diario confiable y recuperación de errores.',
+        'project2-desc': 'Pipeline de datos incremental con autenticación OAuth 2.0 (protocolo estándar para conexión segura entre sistemas empresariales), logrando 80% de reducción en tiempo de procesamiento. Ejecución automática diaria con recuperación ante fallos.',
         'project2-status': 'Producción (2024)',
         'project2-value1': '80%',
         'project2-impact1': 'Reducción procesamiento',
@@ -56,16 +67,16 @@ const translations = {
 
         // Project 3
         'project3-title': 'Herramienta Inteligente de Normalización de Datos',
-        'project3-desc': 'Aplicación desktop PyQt6 con algoritmo de fuzzy matching (85% precisión) para normalización automatizada de datos. Reduce entrada manual de datos en 4 horas por semana.',
+        'project3-desc': 'Aplicación desktop PyQt6 con algoritmo de fuzzy matching (reconocimiento aproximado de texto con 85% precisión) para normalización automatizada de datos. Reduce entrada manual de datos en 4 horas por semana.',
         'project3-status': 'Producción (2024)',
         'project3-value1': '4h',
         'project3-impact1': 'Horas ahorradas/sem',
         'project3-value2': '85%',
-        'project3-impact2': 'Precisión automatización',
+        'project3-impact2': 'Precisión de coincidencia',
 
         // Project 4
         'project4-title': 'Proyecto de Medallion Architecture en Databricks',
-        'project4-desc': 'Pipeline ETL end-to-end con arquitectura medallion (Bronze→Silver→Gold) procesando +100K transacciones. Implementa PySpark, Delta Lake y Great Expectations para calidad de datos, con dashboard Streamlit interactivo.',
+        'project4-desc': 'Pipeline ETL end-to-end con arquitectura medallion (3 capas: datos brutos → refinados → analíticos) procesando +100K transacciones. Implementa PySpark, Delta Lake y Great Expectations (validación automática de calidad de datos) con dashboard Streamlit interactivo.',
         'project4-status': 'Académico (2024)',
         'project4-value1': '100K+',
         'project4-impact1': 'Transacciones procesadas',
@@ -75,27 +86,41 @@ const translations = {
         // Project Actions
         'project-view-code': 'Ver Código',
         'project-confidential': 'Proyecto Empresarial',
+        'project-academic': 'Proyecto Académico',
+
+        // Hero Stats
+        'hero-stat-1': 'Reducción de Latencia',
+        'hero-stat-2': 'Registros Procesados',
+        'hero-stat-3': 'Tiempo de Ciclo Optimizado',
+
+        // About Label
+        'about-sub': 'Consultor Workday · Data Engineer',
 
         // Skills Section
         'skills-title': 'Skills',
         'skills-cat1': 'Languages',
         'skills-cat2': 'Data Engineering',
         'skills-cat3': 'Architecture',
-        'skills-cat4': 'Cloud & Tools',
+        'skills-cat4': 'Workday Platform',
 
         // Contact Section
         'contact-title': 'Contacto',
-        'contact-heading': '¿Hablamos de tu próximo proyecto de datos?',
-        'contact-available-text': 'Consultoría Data Engineering • Automatización • Arquitectura ETL • Optimización',
+        'contact-heading': '¿Buscas un consultor para tu próxima implementación Workday o proyecto de datos?',
+        'contact-available-text': 'Consultoría Workday • Data Conversion • ETL Pipelines • Arquitectura de Datos',
         'contact-cv': 'Descargar CV',
+        'contact-expect-title': '¿Qué esperar?',
+        'contact-expect-body': ' Responderé en 24h con un análisis inicial. También disponible por ',
+        'contact-expect-end': ' para consultas rápidas.',
 
         // Contact Form
-        'form-name': 'Nombre',
-        'form-email': 'Email',
-        'form-message': 'Mensaje',
-        'form-submit': 'Enviar',
-        'form-success': '¡Mensaje enviado exitosamente! Te contactaré pronto.',
-        'form-error': 'Error al enviar mensaje. Por favor intenta de nuevo o contáctame directamente.',
+        'form-name': 'Tu nombre',
+        'form-email': 'Tu email (responderé aquí)',
+        'form-message': 'Cuéntame sobre tu proyecto',
+        'form-submit': 'Enviar mensaje',
+        'form-sending': 'Enviando...',
+        'form-retry': 'Intentar de nuevo',
+        'form-success': '✓ ¡Mensaje enviado! Espera mi respuesta en 24 horas.',
+        'form-error': 'No se pudo enviar el mensaje. Verifica tu conexión o escríbeme por WhatsApp.',
 
         // Footer
         'footer-rights': 'Todos los derechos reservados'
@@ -109,18 +134,32 @@ const translations = {
         'nav-contact': 'Contact',
 
         // Hero Section
-        'hero-title': 'Data Engineer',
-        'hero-tagline': 'Transforming 6-hour processes into 45 minutes through intelligent automation and scalable architecture',
+        'hero-title': 'Workday Consultant',
+        'hero-tagline': 'Data automation · ETL pipelines · Workday migration',
+        'hero-pain-hook': 'I turn days-long manual processes into automated pipelines that run in minutes.',
+        'hero-avail': 'Available · Reply within 24h',
         'hero-cta': 'View Projects',
+        'hero-contact': 'Let\'s Talk',
         'hero-github': 'GitHub',
         'hero-downloadCV': 'Download CV',
         'hero-slogan': 'Precision in Process, Power in Performance',
 
         // About Section
-        'about-title': 'About Me',
-        'about-p1': 'Data Engineer with experience building production ETL pipelines and data systems. Specialized in large-scale processing optimization: reduced enterprise audit system from 6 hours to 45 minutes (92% improvement) processing 500K+ records.',
-        'about-p2': 'My background combines data analysis, API integration, and scalable architecture design. At WWT Costa Rica, I develop production Python applications, data quality frameworks, and automated pipelines handling 350+ concurrent data flows.',
-        'about-p3': 'Currently pursuing Software Development degree at Universidad Cenfotec (60% completed), applying continuous learning to master Apache Spark, DDD patterns, and cloud architecture.',
+        'about-title': 'About',
+        'about-manifesto': 'I migrate enterprise data to Workday and build scalable ETL pipelines — where data always arrives clean.',
+        'dossier-role-label': 'Role',
+        'dossier-role': 'Workday Consultant · Data Engineer',
+        'dossier-exp-label': 'Experience',
+        'dossier-exp': '6 years professional · 2+ in data',
+        'dossier-company-label': 'Platform',
+        'dossier-location-label': 'Location',
+        'dossier-location': 'Costa Rica — remote',
+        'dossier-background-label': 'Stack',
+        'dossier-background': 'ETL · Apache Spark · Databricks · OAuth 2.0',
+        'dossier-achievement-label': 'Result',
+        'dossier-achievement': '92% latency reduction · 500K+ records · 6h process → 45min',
+        'dossier-approach-label': 'Methods',
+        'dossier-approach': 'Scalable architecture · Intelligent automation · Modern AI tools',
         'about-card1': 'Performance',
         'about-card2': 'Scale',
         'about-card3': 'Quality',
@@ -140,7 +179,7 @@ const translations = {
 
         // Project 2
         'project2-title': 'SharePoint-to-Power BI ETL Pipeline',
-        'project2-desc': 'End-to-end incremental data pipeline with OAuth 2.0 authentication, achieving 80% processing time reduction. Designed for reliable daily scheduling and error recovery.',
+        'project2-desc': 'Incremental data pipeline with OAuth 2.0 authentication (industry-standard secure connection between SharePoint and Power BI), achieving 80% processing time reduction. Runs automatically every day with built-in error recovery.',
         'project2-status': 'Production (2024)',
         'project2-value1': '80%',
         'project2-impact1': 'Processing reduction',
@@ -148,17 +187,17 @@ const translations = {
         'project2-impact2': 'Concurrent flows',
 
         // Project 3
-        'project3-title': 'Intelligent Data Truncation Tool',
-        'project3-desc': 'PyQt6 desktop application with fuzzy matching algorithm (85% accuracy) for automated data normalization. Reduced manual data entry by 4 hours per week.',
+        'project3-title': 'Intelligent Data Normalization Tool',
+        'project3-desc': 'PyQt6 desktop application with fuzzy matching algorithm (approximate text matching with 85% accuracy) for automated data normalization. Reduced manual data entry by 4 hours per week.',
         'project3-status': 'Production (2024)',
         'project3-value1': '4h',
         'project3-impact1': 'Hours/week saved',
         'project3-value2': '85%',
-        'project3-impact2': 'Automation accuracy',
+        'project3-impact2': 'Match accuracy',
 
         // Project 4
         'project4-title': 'Databricks Medallion Architecture Project',
-        'project4-desc': 'End-to-end ETL pipeline with medallion architecture (Bronze→Silver→Gold) processing 100K+ transactions. Implements PySpark, Delta Lake, and Great Expectations for data quality, with interactive Streamlit dashboard.',
+        'project4-desc': 'End-to-end ETL pipeline with medallion architecture (3 layers: raw data → refined → analytics) processing 100K+ transactions. Implements PySpark, Delta Lake, and Great Expectations (automated data quality validation) with interactive Streamlit dashboard.',
         'project4-status': 'Academic (2024)',
         'project4-value1': '100K+',
         'project4-impact1': 'Transactions processed',
@@ -168,27 +207,41 @@ const translations = {
         // Project Actions
         'project-view-code': 'View Code',
         'project-confidential': 'Enterprise Project',
+        'project-academic': 'Academic Project',
+
+        // Hero Stats
+        'hero-stat-1': 'Latency Reduction',
+        'hero-stat-2': 'Records Processed',
+        'hero-stat-3': 'Cycle Time Optimized',
+
+        // About Label
+        'about-sub': 'Workday Consultant · Data Engineer',
 
         // Skills Section
         'skills-title': 'Skills',
         'skills-cat1': 'Languages',
         'skills-cat2': 'Data Engineering',
         'skills-cat3': 'Architecture',
-        'skills-cat4': 'Cloud & Tools',
+        'skills-cat4': 'Workday Platform',
 
         // Contact Section
         'contact-title': 'Contact',
-        'contact-heading': "Let's talk about your next data project?",
-        'contact-available-text': 'Data Engineering Consulting • Automation • ETL Architecture • Optimization',
+        'contact-heading': "Need a consultant for your next Workday implementation or data project?",
+        'contact-available-text': 'Workday Consulting • Data Conversion • ETL Pipelines • Data Architecture',
         'contact-cv': 'Download CV',
+        'contact-expect-title': 'What to expect?',
+        'contact-expect-body': ' I\'ll reply within 24h with an initial analysis. Also available on ',
+        'contact-expect-end': ' for quick questions.',
 
         // Contact Form
-        'form-name': 'Name',
-        'form-email': 'Email',
-        'form-message': 'Message',
-        'form-submit': 'Send',
-        'form-success': 'Message sent successfully! I will contact you soon.',
-        'form-error': 'Error sending message. Please try again or contact me directly.',
+        'form-name': 'Your name',
+        'form-email': 'Your email (I\'ll reply here)',
+        'form-message': 'Tell me about your project',
+        'form-submit': 'Send message',
+        'form-sending': 'Sending...',
+        'form-retry': 'Try again',
+        'form-success': '✓ Message sent! I\'ll reply within 24 hours.',
+        'form-error': 'Couldn\'t send the message. Check your connection or reach me via WhatsApp.',
 
         // Footer
         'footer-rights': 'All rights reserved'
@@ -208,6 +261,9 @@ function switchLanguage() {
 
     // Update language button display
     updateLanguageButton();
+
+    // Sync html[lang] attribute for screen readers
+    document.documentElement.lang = currentLanguage;
 
     // Save language preference to localStorage
     localStorage.setItem('preferredLanguage', currentLanguage);
@@ -274,6 +330,7 @@ function initLanguage() {
     // Update content and button on initial load
     updateContent();
     updateLanguageButton();
+    document.documentElement.lang = currentLanguage;
 }
 
 // Initialize language when DOM is fully loaded

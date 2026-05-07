@@ -27,8 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close mobile menu when clicking on a link
     setupMobileMenuClose();
 
-    // Initialize Swiper Projects Carousel
-    initProjectsSwiper();
+    // Project accordion removed — descriptions always visible per design intent
 
     // Initialize GSAP Animations
     initGSAPAnimations();
@@ -128,43 +127,13 @@ function setupSkipLink() {
     });
 }
 
-// ========== CSS LOADING SPINNER (replaces Lottie) ==========
-/**
- * Show loading animation (CSS spinner)
- */
-function showLoader() {
-    const loaderContainer = document.getElementById('lottieLoader');
-    const submitBtn = document.querySelector('.btn-submit');
-
-    if (loaderContainer) {
-        loaderContainer.style.display = 'block';
-        if (submitBtn) submitBtn.style.display = 'none';
-    }
-}
-
-/**
- * Hide loading animation (CSS spinner)
- */
-function hideLoader() {
-    const loaderContainer = document.getElementById('lottieLoader');
-    const submitBtn = document.querySelector('.btn-submit');
-
-    if (loaderContainer) {
-        loaderContainer.style.display = 'none';
-        if (submitBtn) submitBtn.style.display = 'block';
-    }
-}
-
 // ========== DARK/LIGHT MODE TOGGLE ==========
 /**
  * Initialize theme from localStorage or system preference
  */
 function initTheme() {
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-
+    const theme = savedTheme || 'light';
     document.documentElement.setAttribute('data-theme', theme);
     updateThemeIcon(theme);
 }
@@ -208,7 +177,7 @@ function updateThemeIcon(theme) {
  */
 function setupSmoothScroll() {
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    const navbar = document.querySelector('.navbar');
+    const navbarCollapse = document.querySelector('.navbar-collapse');
 
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -217,38 +186,21 @@ function setupSmoothScroll() {
 
             e.preventDefault();
 
+            // Close mobile menu if open
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const toggle = document.querySelector('.navbar-toggler');
+                if (toggle) toggle.click();
+            }
+
             const targetId = href.substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
-                const navbarHeight = navbar ? navbar.offsetHeight : 80;
-                let targetElement;
-                let offset;
-
-                // Determine target element and offset for each section
-                if (targetId === 'hero') {
-                    targetElement = targetSection.querySelector('.hero-tag') || targetSection;
-                    offset = 20;
-                } else if (targetId === 'about' || targetId === 'projects' || targetId === 'skills') {
-                    targetElement = targetSection.querySelector('.section-header') || targetSection;
-                    offset = 10;
-                } else if (targetId === 'contact') {
-                    targetElement = targetSection.querySelector('.section-header') || targetSection;
-                    offset = 20;
-                } else {
-                    targetElement = targetSection;
-                    offset = 0;
-                }
-
-                // Calculate scroll position (all AOS elements already animated)
-                const rect = targetElement.getBoundingClientRect();
-                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                const scrollTarget = currentScroll + rect.top - navbarHeight - offset;
-
-                // Single smooth scroll - clean and precise
-                window.scrollTo({
-                    top: scrollTarget,
-                    behavior: 'smooth'
+                // Use native scrollIntoView() which respects CSS scroll-padding-top
+                // This ensures proper offset on all screen sizes
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
@@ -330,10 +282,77 @@ function setupMobileMenuClose() {
 function setupContactForm() {
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+    const retryBtn = document.getElementById('retryBtn');
+    const formLoading = document.getElementById('formLoading');
 
     if (!contactForm) return;
 
-    contactForm.addEventListener('submit', function(e) {
+    // Draft persistence — survives page refresh, clears on successful send
+    const DRAFT_KEY = 'contact_draft';
+
+    function saveDraft() {
+        try {
+            sessionStorage.setItem(DRAFT_KEY, JSON.stringify({
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            }));
+        } catch (e) { /* storage unavailable — degrade silently */ }
+    }
+
+    function clearDraft() {
+        try { sessionStorage.removeItem(DRAFT_KEY); } catch (e) {}
+    }
+
+    function restoreDraft() {
+        try {
+            const raw = sessionStorage.getItem(DRAFT_KEY);
+            if (!raw) return;
+            const draft = JSON.parse(raw);
+            if (draft.name)    document.getElementById('name').value    = draft.name;
+            if (draft.email)   document.getElementById('email').value   = draft.email;
+            if (draft.message) document.getElementById('message').value = draft.message;
+        } catch (e) {
+            clearDraft();
+        }
+    }
+
+    restoreDraft();
+    ['name', 'email', 'message'].forEach(id => {
+        document.getElementById(id).addEventListener('input', saveDraft);
+    });
+
+    // Helper: Show loading state
+    function showLoadingState() {
+        submitBtn.style.display = 'none';
+        retryBtn.style.display = 'none';
+        formLoading.style.display = 'flex';
+        formStatus.textContent = '';
+        formStatus.className = 'form-status';
+        ['name', 'email', 'message'].forEach(id => {
+            document.getElementById(id).disabled = true;
+        });
+    }
+
+    // Helper: Show normal state
+    function hideLoadingState() {
+        formLoading.style.display = 'none';
+        submitBtn.style.display = 'block';
+        submitBtn.disabled = false;
+        ['name', 'email', 'message'].forEach(id => {
+            document.getElementById(id).disabled = false;
+        });
+    }
+
+    // Helper: Show retry button
+    function showRetry() {
+        formLoading.style.display = 'none';
+        retryBtn.style.display = 'block';
+        submitBtn.style.display = 'none';
+    }
+
+    const submitHandler = function(e) {
         e.preventDefault();
 
         // Get form data
@@ -350,59 +369,57 @@ function setupContactForm() {
             return;
         }
 
-        // Show loading animation
-        showLoader();
+        // Show loading state
+        showLoadingState();
 
         // ========== EMAILJS INTEGRATION ==========
-        // EmailJS Credentials (Updated 2025)
-        const PUBLIC_KEY = 'c1v4HjVi2uotL4KP0';  // ✅ Updated
-        const SERVICE_ID = 'service_wrz9qj4';  // ✅ Updated
+        const PUBLIC_KEY = 'c1v4HjVi2uotL4KP0';
+        const SERVICE_ID = 'service_wrz9qj4';
+        const TEMPLATE_CONTACT = 'template_z5lima8';
+        const TEMPLATE_AUTOREPLY = 'template_zjzcuqt';
 
-        // Template IDs
-        const TEMPLATE_CONTACT = 'template_z5lima8';  // Contact notification to José
-        const TEMPLATE_AUTOREPLY = 'template_zjzcuqt';  // Auto-reply to user
-
-        // Initialize EmailJS
         emailjs.init(PUBLIC_KEY);
 
-        // Send BOTH emails: Contact notification + Auto-reply
-
-        // Email 1: Send contact notification to José Picado
         emailjs.send(SERVICE_ID, TEMPLATE_CONTACT, {
             from_name: formData.name,
             from_email: formData.email,
             message: formData.message
         })
         .then(function(response) {
-
-            // Email 2: Send auto-reply confirmation to the user
-            // Variables must match template configuration exactly
             return emailjs.send(SERVICE_ID, TEMPLATE_AUTOREPLY, {
-                email: formData.email,      // {{email}} - To Email field
-                from_name: formData.name,   // {{from_name}} - In HTML
-                message: formData.message   // {{message}} - In HTML
+                email: formData.email,
+                from_name: formData.name,
+                message: formData.message
             });
         })
         .then(function(response) {
+            hideLoadingState();
             showFormStatus('success', getSuccessMessage());
             contactForm.reset();
+            clearDraft();
+            submitBtn.style.display = 'block';
+
+            // Auto-clear success after 3s
+            setTimeout(() => {
+                formStatus.textContent = '';
+                formStatus.className = 'form-status';
+            }, 3000);
         })
         .catch(function(error) {
-
-            // Show which template failed
             const errorMsg = error.status === 422
-                ? (currentLanguage === 'es'
+                ? (typeof currentLanguage !== 'undefined' && currentLanguage === 'es'
                     ? 'Error 422: Las variables del template no coinciden. Verifica tu configuración en EmailJS.'
                     : 'Error 422: Template variables mismatch. Check your EmailJS configuration.')
                 : getErrorMessage();
 
             showFormStatus('error', errorMsg);
-        })
-        .finally(function() {
-            // Hide loading animation
-            hideLoader();
+            showRetry();
         });
-    });
+    };
+
+    // Attach submit handler to both submit button and retry button
+    contactForm.addEventListener('submit', submitHandler);
+    retryBtn.addEventListener('click', submitHandler);
 }
 
 /**
@@ -416,22 +433,22 @@ function validateForm(data) {
     // Validation error messages
     const errorMessages = {
         es: {
-            emptyName: 'Por favor ingresa tu nombre.',
-            emptyEmail: 'Por favor ingresa tu email.',
-            emptyMessage: 'Por favor ingresa un mensaje.',
-            invalidEmail: 'Por favor ingresa un email válido.',
-            shortMessage: 'El mensaje debe tener al menos 10 caracteres.',
-            longName: 'El nombre no puede exceder 100 caracteres.',
-            longMessage: 'El mensaje no puede exceder 1000 caracteres.'
+            emptyName: '¿Cuál es tu nombre? Lo necesito para responder.',
+            emptyEmail: '¿Tu email? Aquí es donde te contactaré.',
+            emptyMessage: 'Cuéntame qué necesitas — sin mensaje no puedo ayudarte.',
+            invalidEmail: 'Ese email no se ve correcto. ¿Falta el @ o algo?',
+            shortMessage: 'Dile un poco más — al menos 10 caracteres para que entienda.',
+            longName: 'Ese nombre es muy largo (máx 100 caracteres).',
+            longMessage: 'Tu mensaje es muy largo (máx 1000 caracteres).'
         },
         en: {
-            emptyName: 'Please enter your name.',
-            emptyEmail: 'Please enter your email.',
-            emptyMessage: 'Please enter a message.',
-            invalidEmail: 'Please enter a valid email address.',
-            shortMessage: 'Message must be at least 10 characters long.',
-            longName: 'Name cannot exceed 100 characters.',
-            longMessage: 'Message cannot exceed 1000 characters.'
+            emptyName: 'What\'s your name? I need it to respond.',
+            emptyEmail: 'Your email? That\'s where I\'ll reply.',
+            emptyMessage: 'Tell me what you need — without a message I can\'t help.',
+            invalidEmail: 'That doesn\'t look like an email. Missing @ or something?',
+            shortMessage: 'Tell me more — at least 10 characters so I understand.',
+            longName: 'That name is too long (max 100 characters).',
+            longMessage: 'Your message is too long (max 1000 characters).'
         }
     };
 
@@ -491,13 +508,22 @@ function showFormStatus(type, message) {
 
     // Add appropriate class and message
     formStatus.classList.add(type);
-    formStatus.textContent = message;
+
+    if (type === 'error') {
+        const waLabel = (typeof currentLanguage !== 'undefined' && currentLanguage === 'en')
+            ? 'Message via WhatsApp'
+            : 'Escribir por WhatsApp';
+        formStatus.innerHTML = `${message} <a href="https://wa.me/50684756191" target="_blank" rel="noopener noreferrer" class="form-error-wa"><i class="fab fa-whatsapp"></i> ${waLabel}</a>`;
+    } else {
+        formStatus.textContent = message;
+    }
+
     formStatus.style.display = 'block';
 
-    // Auto-hide after 5 seconds
+    // Auto-hide after 10 seconds (gives users time to read the message)
     setTimeout(() => {
         formStatus.style.display = 'none';
-    }, 5000);
+    }, 10000);
 }
 
 /**
@@ -595,79 +621,6 @@ function throttle(func, limit) {
     };
 }
 
-// ========== SWIPER CAROUSEL INITIALIZATION ==========
-/**
- * Initialize Swiper.js Projects Carousel
- */
-function initProjectsSwiper() {
-    if (typeof Swiper === 'undefined') return;
-
-    const projectsSwiper = new Swiper('.projectsSwiper', {
-        // Swiper Parameters
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-            delay: 5000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true
-        },
-        speed: 800,
-        effect: 'slide',
-
-        // Navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-
-        // Pagination
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-            dynamicBullets: true,
-        },
-
-        // Keyboard control
-        keyboard: {
-            enabled: true,
-            onlyInViewport: true,
-        },
-
-        // Mouse wheel control
-        mousewheel: {
-            enabled: false,
-        },
-
-        // Responsive breakpoints
-        breakpoints: {
-            768: {
-                slidesPerView: 1,
-            },
-        },
-
-        // Events
-        on: {
-            init: function () {
-                // DISABLED: updateProjectContent causes image/content mismatch
-                // updateProjectContent(this.realIndex);
-            },
-            slideChange: function () {
-                // DISABLED: updateProjectContent causes image/content mismatch
-                // Content is already correctly set in HTML, no need to override
-                // updateProjectContent(this.realIndex);
-
-                // Add custom animations on slide change
-                const activeSlide = this.slides[this.activeIndex];
-                if (activeSlide) {
-                    activeSlide.classList.add('swiper-slide-animated');
-                }
-            },
-        },
-    });
-}
-
-
 // ========== GSAP ANIMATIONS ==========
 /**
  * Initialize GSAP Premium Animations
@@ -702,22 +655,24 @@ function initGSAPAnimations() {
         ease: 'power3.out'
     });
 
-    gsap.from('.hero-stats .stat-item', {
-        opacity: 0,
-        y: 30,
-        duration: 0.6,
-        delay: 0.6,
-        stagger: 0.15,
-        ease: 'back.out(1.4)'
-    });
-
     gsap.from('.btn-cta', {
         opacity: 0,
         scale: 0.8,
         duration: 0.6,
-        delay: 1,
-        ease: 'elastic.out(1, 0.5)'
+        delay: 0.7,
+        ease: 'power3.out'
     });
+
+    gsap.from('.hero-stats .hero-stat-item', {
+        opacity: 0,
+        y: 20,
+        duration: 0.6,
+        delay: 0.9,
+        stagger: 0.15,
+        ease: 'power3.out'
+    });
+
+    // Lottie player animation is handled by the HTML autoplay attribute
 
     // Section Title Animations with ScrollTrigger
     gsap.utils.toArray('.section-title').forEach((title) => {
@@ -735,7 +690,7 @@ function initGSAPAnimations() {
     });
 
     // Skills Cards Animation
-    gsap.from('.skill-card', {
+    gsap.from('.skills-index .skill-row', {
         opacity: 0,
         y: 50,
         duration: 0.6,
@@ -748,6 +703,23 @@ function initGSAPAnimations() {
         }
     });
 
+    // Project Cards Scroll Reveal Animation
+    gsap.utils.toArray('.project-row').forEach((card, index) => {
+        gsap.from(card, {
+            opacity: 0,
+            y: 30,
+            duration: 0.6,
+            delay: index * 0.1,
+            ease: 'power3.out',
+            scrollTrigger: {
+                trigger: card,
+                start: 'top 75%',
+                end: 'bottom 60%',
+                toggleActions: 'play none none none'
+            }
+        });
+    });
+
     // Floating Buttons Animation
     gsap.from('.btn-floating', {
         opacity: 0,
@@ -755,7 +727,7 @@ function initGSAPAnimations() {
         duration: 0.6,
         delay: 1.5,
         stagger: 0.2,
-        ease: 'back.out(1.7)'
+        ease: 'power3.out'
     });
 
     // Mouse follower effect for hero section (optional premium effect)

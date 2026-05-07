@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <meta name="description" content="José Picado - Data Engineer especializado en pipelines ETL, optimización de procesos y arquitectura de datos escalable. 92% reducción latencia, 500K+ registros procesados.">
-    <meta name="keywords" content="Data Engineer, ETL, Python, SQL, Apache Spark, Data Engineering, Costa Rica, Pipeline, Big Data, Databricks">
+    <meta name="description" content="José Picado — Technical Consultant for Data Conversion on Workday. ETL pipelines, migración de datos empresariales y optimización de procesos. 92% reducción latencia, 500K+ registros procesados.">
+    <meta name="keywords" content="Workday Consultant, Data Conversion, Technical Consultant, ETL, Python, SQL, Apache Spark, Data Engineering, Costa Rica, Pipeline, Databricks">
     <meta name="author" content="José Andrés Picado Corrales">
-    <title>José Picado | Data Engineer - ETL & Big Data Specialist</title>
+    <title>José Picado | Workday Technical Consultant — Data Conversion</title>
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://josepicado07.github.io/Portaflio_Jose_Picado/">
-    <meta property="og:title" content="José Picado | Data Engineer - ETL & Big Data Specialist">
-    <meta property="og:description" content="Data Engineer con experiencia en pipelines ETL y sistemas de datos en producción. 92% reducción latencia, 500K+ registros procesados.">
+    <meta property="og:title" content="José Picado | Workday Technical Consultant — Data Conversion">
+    <meta property="og:description" content="Technical Consultant for Data Conversion on Workday. ETL pipelines, migración empresarial de datos y optimización de procesos. 92% reducción latencia.">
     <meta property="og:image" content="https://josepicado07.github.io/Portaflio_Jose_Picado/images/logo.jpg">
     <meta property="og:locale" content="es_CR">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://josepicado07.github.io/Portaflio_Jose_Picado/">
-    <meta name="twitter:title" content="José Picado | Data Engineer">
-    <meta name="twitter:description" content="Data Engineer especializado en pipelines ETL, optimización de procesos y arquitectura de datos escalable">
+    <meta name="twitter:title" content="José Picado | Workday Consultant">
+    <meta name="twitter:description" content="Technical Consultant for Data Conversion on Workday. ETL, migración de datos y optimización de procesos empresariales.">
     <meta name="twitter:image" content="https://josepicado07.github.io/Portaflio_Jose_Picado/images/logo.jpg">
 
     <!-- Canonical URL -->
@@ -49,15 +49,11 @@
     <!-- AOS Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <!-- Swiper.js - Modern Touch Slider -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
     <!-- Google Fonts with font-display swap for better performance -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Exo+2:wght@700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/swiper-custom.css">
 
     <!-- Schema.org JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -68,16 +64,16 @@
       "alternateName": "José Picado",
       "url": "https://josepicado07.github.io/Portaflio_Jose_Picado/",
       "image": "https://josepicado07.github.io/Portaflio_Jose_Picado/images/logo.jpg",
-      "jobTitle": "Data Engineer",
+      "jobTitle": "Technical Consultant, Data Conversion",
       "worksFor": {
         "@type": "Organization",
-        "name": "WWT Costa Rica"
+        "name": "Workday"
       },
       "alumniOf": {
         "@type": "EducationalOrganization",
         "name": "Universidad Cenfotec"
       },
-      "knowsAbout": ["Data Engineering", "ETL Pipelines", "Python", "SQL", "Apache Spark", "Big Data", "Data Architecture"],
+      "knowsAbout": ["Workday Data Conversion", "ETL Pipelines", "Python", "SQL", "Apache Spark", "Data Migration", "Data Architecture"],
       "email": "jpicado011@gmail.com",
       "sameAs": [
         "https://www.linkedin.com/in/josé-andrés-picado-corrales-a10a28173",
@@ -89,7 +85,7 @@
 <body>
 
     <!-- Skip to main content link for accessibility -->
-    <a href="#about" class="skip-link">Skip to main content</a>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- ========== HEADER / NAVIGATION ========== -->
     <header id="header" class="header-navbar">
@@ -97,8 +93,7 @@
             <div class="container">
                 <!-- Logo -->
                 <a class="navbar-brand" href="#hero">
-                    <img src="images/logo.jpg" alt="José Picado Logo" class="logo-icon">
-                    <span class="logo-text">José Picado</span>
+                    <img src="images/logo.jpg" alt="José Picado — Workday Technical Consultant" class="logo-image">
                 </a>
 
                 <!-- Mobile Toggle Button -->
@@ -108,7 +103,7 @@
 
                 <!-- Navigation Menu -->
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mx-auto">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="#about" data-translate="nav-about">Sobre Mí</a>
                         </li>
@@ -132,7 +127,7 @@
 
                     <!-- Language Switcher -->
                     <div class="language-switcher">
-                        <button id="langBtn" class="btn-language" onclick="switchLanguage()">
+                        <button id="langBtn" class="btn-language" onclick="switchLanguage()" aria-label="Switch language">
                             <span id="currentLang">ES</span> | <span id="otherLang">EN</span>
                         </button>
                     </div>
@@ -146,384 +141,280 @@
 
     <!-- ========== SECTION 1: HERO ========== -->
     <section id="hero" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Hero Content -->
-                <div class="col-lg-7 col-md-6 hero-content" data-aos="fade-right">
-                    <div class="hero-tag" data-translate="hero-title">Data Engineer</div>
-                    <h1 class="hero-heading">José Andrés Picado</h1>
-                    <p class="hero-tagline" data-translate="hero-tagline">
-                        Transformando procesos de 6 horas en 45 minutos mediante automatización inteligente y arquitectura escalable
-                    </p>
+        <div class="hero-container">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-tag" title="Enterprise HR and finance platform used by Fortune 500 companies">
+                    <span data-translate="hero-title">Workday Consultant</span>
+                </div>
+                <h1 class="hero-heading">
+                    <span class="hero-name-1">José Andrés</span>
+                    <span class="hero-name-2">Picado</span>
+                </h1>
+                <p class="hero-tagline" data-translate="hero-tagline">
+                    Automatización de datos · Pipelines ETL · Migración Workday
+                </p>
 
-                    <!-- CTA Buttons -->
-                    <div class="hero-ctas">
-                        <a href="#projects" class="btn-cta btn-primary-modern">
-                            <span data-translate="hero-cta">Ver Proyectos</span>
-                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                                <path d="M10 14l-4-4m4 4l4-4m-4 4V6" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                        </a>
-                        <a href="https://github.com/josepicado07" target="_blank" class="btn-cta btn-secondary-modern">
-                            <i class="fab fa-github btn-icon"></i>
-                            <span data-translate="hero-github">GitHub</span>
-                        </a>
-                        <a href="assets/CV_Jose_Picado_2025.pdf" download class="btn-cta btn-secondary-modern">
-                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
-                                <path d="M10 3v12m0 0l-4-4m4 4l4-4" stroke-width="2" stroke-linecap="round"/>
-                                <path d="M3 17h14" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <span data-translate="hero-downloadCV">Descargar CV</span>
-                        </a>
+                <!-- Pain/Solution Hook -->
+                <p class="hero-pain-hook" data-translate="hero-pain-hook">
+                    Convierto procesos manuales de días en pipelines automáticos de minutos.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="hero-ctas">
+                    <a href="#projects" class="btn-cta btn-primary-modern">
+                        <span data-translate="hero-cta">Ver Proyectos</span>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M10 14l-4-4m4 4l4-4m-4 4V6" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                    <a href="assets/CV_Jose_Picado_2025.pdf" download class="btn-cta btn-secondary-modern">
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M10 3v12m0 0l-4-4m4 4l4-4" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M3 17h14" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span data-translate="hero-downloadCV">Descargar CV</span>
+                    </a>
+                    <a href="#contact" class="btn-cta btn-contact-modern">
+                        <span data-translate="hero-contact">Hablemos</span>
+                        <svg class="btn-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor">
+                            <path d="M2 4h16c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2h-5l-3 3v-3H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="hero-stats">
+                    <div class="hero-stat-item" title="Reduced processing time from 6 hours to 45 minutes">
+                        <span class="hero-stat-number">92%</span>
+                        <span class="hero-stat-label" data-translate="hero-stat-1">Latency Reduction</span>
+                    </div>
+                    <div class="hero-stat-item" title="Records migrated and validated in Workday">
+                        <span class="hero-stat-number">500K+</span>
+                        <span class="hero-stat-label" data-translate="hero-stat-2">Records Processed</span>
+                    </div>
+                    <div class="hero-stat-item" title="Concurrent data pipelines managed">
+                        <span class="hero-stat-number">350+</span>
+                        <span class="hero-stat-label" data-translate="hero-stat-3">Concurrent Flows</span>
                     </div>
                 </div>
 
-                <!-- Hero Image -->
-                <div class="col-lg-5 col-md-6 hero-image" data-aos="fade-left">
-                    <div class="image-wrapper">
-                        <img src="images/logo.jpg" alt="José Picado - Data Engineer" class="profile-image">
-                    </div>
+                <!-- Availability micro-badge -->
+                <div class="hero-availability">
+                    <span class="hero-avail-dot"></span>
+                    <span class="hero-avail-text" data-translate="hero-avail">Disponible · Respondo en 24h</span>
                 </div>
             </div>
-        </div>
 
-        <!-- Slogan Overlay -->
-        <div class="hero-slogan">
-            <p data-translate="hero-slogan">Precision in Process, Power in Performance</p>
+            <!-- Data Flow Visualization - ETL Pipeline (positioned right on desktop) -->
+            <div class="hero-visualization">
+                <img src="images/etl-process-animation.gif" alt="ETL data flow: Extract → Transform → Load" class="hero-viz-gif" width="320" height="280" />
+            </div>
         </div>
     </section>
 
     <!-- ========== SECTION 2: ABOUT ========== -->
     <section id="about" class="about-section">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title" data-translate="about-title">Sobre Mí</h2>
-                <div class="title-underline"></div>
-            </div>
-
             <div class="row">
-                <!-- About Content -->
-                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
-                    <div class="about-content">
-                        <p class="about-text" data-translate="about-p1">
-                            Data Engineer con experiencia construyendo pipelines ETL y sistemas de datos en producción.
-                            Especializado en optimización de procesamiento a gran escala: reduje sistema de auditoría
-                            empresarial de 6 horas a 45 minutos (92% mejora) procesando 500K+ registros.
-                        </p>
-
-                        <p class="about-text" data-translate="about-p2">
-                            Mi background combina análisis de datos, integración de APIs y diseño de arquitectura escalable.
-                            En WWT Costa Rica, desarrollo aplicaciones Python en producción, frameworks de calidad de datos
-                            y pipelines automatizados que procesan 350+ flujos de datos concurrentes.
-                        </p>
-
-                        <p class="about-text" data-translate="about-p3">
-                            Actualmente cursando Ingeniería en Desarrollo de Software en Universidad Cenfotec (60% completado),
-                            aplicando aprendizaje continuo para dominar Apache Spark, patrones DDD y arquitectura cloud.
-                        </p>
-
-                        <!-- Tech Stack Badges -->
-                        <div class="tech-stack">
-                            <div class="tech-badge">
-                                <img src="https://cdn.simpleicons.org/python/3776AB" alt="Python">
-                                <span>Python</span>
-                            </div>
-                            <div class="tech-badge">
-                                <img src="https://cdn.simpleicons.org/postgresql/4169E1" alt="SQL">
-                                <span>SQL</span>
-                            </div>
-                            <div class="tech-badge">
-                                <img src="https://cdn.simpleicons.org/apachespark/E25A1C" alt="Spark">
-                                <span>Spark</span>
-                            </div>
-                            <div class="tech-badge">
-                                <img src="https://cdn.simpleicons.org/pandas/white/150458" alt="Pandas" class="pandas-logo">
-                                <span>Pandas</span>
-                            </div>
-                            <div class="tech-badge">
-                                <img src="https://cdn.simpleicons.org/Databricks/FF3621" alt="Databricks">
-                                <span>Databricks</span>
-                            </div>
-                        </div>
+                <!-- About Label (sticky) -->
+                <div class="col-lg-3" data-aos="fade-up">
+                    <div class="about-label">
+                        <span class="section-number">01</span>
+                        <h2 class="section-title" data-translate="about-title">Sobre Mí</h2>
+                        <div class="title-underline"></div>
+                        <span class="about-label-sub" data-translate="about-sub">Consultor Workday · Data Engineer</span>
                     </div>
                 </div>
 
-                <!-- About Cards -->
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="about-cards">
-                        <div class="metric-card">
-                            <i class="fas fa-rocket card-icon"></i>
-                            <div class="metric-value">92%</div>
-                            <div class="metric-label" data-translate="about-card1">Performance</div>
-                        </div>
+                <!-- About Content -->
+                <div class="col-lg-9" data-aos="fade-up" data-aos-delay="100">
+                    <div class="about-content">
+                        <!-- Manifesto -->
+                        <p class="about-manifesto" data-translate="about-manifesto">
+                            Migro datos empresariales a Workday y construyo pipelines ETL escalables — donde los datos siempre llegan limpios.
+                        </p>
 
-                        <div class="metric-card">
-                            <i class="fas fa-database card-icon"></i>
-                            <div class="metric-value">500K+</div>
-                            <div class="metric-label" data-translate="about-card2">Scale</div>
-                        </div>
+                        <!-- Credential dossier table -->
+                        <dl class="about-dossier">
+                            <div class="dossier-row">
+                                <dt data-translate="dossier-role-label">Rol</dt>
+                                <dd data-translate="dossier-role">Consultor Workday · Data Engineer</dd>
+                            </div>
+                            <div class="dossier-row">
+                                <dt data-translate="dossier-exp-label">Experiencia</dt>
+                                <dd data-translate="dossier-exp">6 años profesional · 2+ en datos</dd>
+                            </div>
+                            <div class="dossier-row">
+                                <dt data-translate="dossier-company-label">Plataforma</dt>
+                                <dd>Workday</dd>
+                            </div>
+                            <div class="dossier-row">
+                                <dt data-translate="dossier-location-label">Ubicación</dt>
+                                <dd data-translate="dossier-location">Costa Rica — remoto</dd>
+                            </div>
+                            <div class="dossier-row">
+                                <dt data-translate="dossier-background-label">Stack</dt>
+                                <dd>
+                                    <abbr title="Extract, Transform, Load — the core data pipeline process">ETL</abbr> ·
+                                    <abbr title="Apache Spark — distributed data processing framework">Apache Spark</abbr> ·
+                                    <abbr title="Databricks — cloud platform for data analytics and ML">Databricks</abbr> ·
+                                    <abbr title="OAuth 2.0 — secure authentication protocol for APIs">OAuth 2.0</abbr>
+                                </dd>
+                            </div>
+                            <div class="dossier-row dossier-highlight">
+                                <dt data-translate="dossier-achievement-label">Resultado</dt>
+                                <dd data-translate="dossier-achievement">92% reducción latencia · 500K+ registros · proceso de 6h → 45min</dd>
+                            </div>
+                            <div class="dossier-row">
+                                <dt data-translate="dossier-approach-label">Métodos</dt>
+                                <dd data-translate="dossier-approach">Arquitectura escalable · Automatización inteligente · Herramientas IA modernas</dd>
+                            </div>
+                        </dl>
 
-                        <div class="metric-card">
-                            <i class="fas fa-check-circle card-icon"></i>
-                            <div class="metric-value">95%</div>
-                            <div class="metric-label" data-translate="about-card3">Quality</div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== SECTION 3: PROJECTS SWIPER CAROUSEL ========== -->
+    <!-- ========== SECTION 3: PROJECTS CASE STUDY LIST ========== -->
     <section id="projects" class="projects-section">
-        <div class="container-fluid">
+        <div class="container">
             <div class="section-header" data-aos="fade-up">
+                <span class="section-number">02</span>
                 <h2 class="section-title" data-translate="projects-title">Proyectos</h2>
                 <div class="title-underline"></div>
                 <p class="section-subtitle" data-translate="projects-subtitle">Soluciones de datos que transforman negocios</p>
             </div>
 
-            <!-- Swiper Projects Carousel -->
-            <div class="swiper projectsSwiper" data-aos="fade-up" data-aos-delay="200">
-                <div class="swiper-wrapper">
+            <div class="projects-list" data-aos="fade-up" data-aos-delay="100">
 
-                    <!-- Project 1: Enterprise Audit System -->
-                    <div class="swiper-slide">
-                        <div class="project-slide-card">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="project-image-wrapper">
-                                        <div class="project-number-badge">01</div>
-                                        <img src="images/audit.png"
-                                             alt="Enterprise Audit System"
-                                             class="project-image-swiper">
-                                        <div class="project-image-overlay"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="project-content-wrapper">
-                                        <span class="project-status-badge" data-translate="project1-status">
-                                            <i class="fas fa-check-circle"></i> Producción (2024)
-                                        </span>
-                                        <h3 class="project-title-swiper" data-translate="project1-title">
-                                            Sistema de Auditoría Empresarial
-                                        </h3>
-                                        <p class="project-description-swiper" data-translate="project1-desc">
-                                            Automatización de procesamiento de compliance auditando 500K+ registros con reducción
-                                            del 92% en latencia (6 horas → 45 minutos). Implementé framework de validación de
-                                            calidad de datos con detección automática de anomalías.
-                                        </p>
-
-                                        <div class="project-tech-stack">
-                                            <span class="tech-badge-swiper">Python</span>
-                                            <span class="tech-badge-swiper">Polars</span>
-                                            <span class="tech-badge-swiper">Pandas</span>
-                                            <span class="tech-badge-swiper">Data Quality</span>
-                                        </div>
-
-                                        <div class="project-actions">
-                                            <div class="btn-project-confidential">
-                                                <i class="fas fa-briefcase"></i>
-                                                <span data-translate="project-confidential">Proyecto Empresarial</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="project-metrics-grid">
-                                            <div class="metric-box">
-                                                <div class="metric-value-lg" data-translate="project1-value1">92%</div>
-                                                <div class="metric-label-sm" data-translate="project1-impact1">Reducción tiempo</div>
-                                            </div>
-                                            <div class="metric-box">
-                                                <div class="metric-value-lg" data-translate="project1-value2">95%</div>
-                                                <div class="metric-label-sm" data-translate="project1-impact2">Reducción revisión manual</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <!-- Project 1 -->
+                <div class="project-row project-featured">
+                    <div class="project-row-header">
+                        <div class="project-row-top">
+                            <div class="project-row-heading">
+                                <span class="project-row-num" aria-hidden="true">01</span>
+                                <span class="project-row-title" data-translate="project1-title">Sistema de Auditoría Empresarial</span>
                             </div>
+                            <svg class="project-row-toggle-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true">
+                                <path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="project-row-metric">
+                            <span class="project-row-value" data-translate="project1-value1">92%</span>
+                            <span class="project-row-label" data-translate="project1-impact1">Reducción tiempo</span>
+                        </div>
+                        <div class="project-row-footer">
+                            <span class="project-row-stack">Python · Polars · Pandas · Data Quality</span>
+                            <span class="project-row-status" data-translate="project1-status">Producción (2024)</span>
                         </div>
                     </div>
-
-                    <!-- Project 2: ETL Pipeline -->
-                    <div class="swiper-slide">
-                        <div class="project-slide-card">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="project-image-wrapper">
-                                        <div class="project-number-badge">02</div>
-                                        <img src="images/ETL_POWER_BI.png"
-                                             alt="SharePoint ETL Pipeline"
-                                             class="project-image-swiper">
-                                        <div class="project-image-overlay"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="project-content-wrapper">
-                                        <span class="project-status-badge" data-translate="project2-status">
-                                            <i class="fas fa-check-circle"></i> Producción (2024)
-                                        </span>
-                                        <h3 class="project-title-swiper" data-translate="project2-title">
-                                            Pipeline ETL SharePoint-to-Power BI
-                                        </h3>
-                                        <p class="project-description-swiper" data-translate="project2-desc">
-                                            Pipeline de datos incremental end-to-end con autenticación OAuth 2.0, logrando 80%
-                                            reducción en tiempo de procesamiento. Diseñado para scheduling diario confiable y
-                                            recuperación de errores.
-                                        </p>
-
-                                        <div class="project-tech-stack">
-                                            <span class="tech-badge-swiper">Python</span>
-                                            <span class="tech-badge-swiper">SharePoint API</span>
-                                            <span class="tech-badge-swiper">OAuth 2.0</span>
-                                            <span class="tech-badge-swiper">Power BI</span>
-                                        </div>
-
-                                        <div class="project-actions">
-                                            <div class="btn-project-confidential">
-                                                <i class="fas fa-briefcase"></i>
-                                                <span data-translate="project-confidential">Proyecto Empresarial</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="project-metrics-grid">
-                                            <div class="metric-box">
-                                                <div class="metric-value-lg" data-translate="project2-value1">80%</div>
-                                                <div class="metric-label-sm" data-translate="project2-impact1">Reducción procesamiento</div>
-                                            </div>
-                                            <div class="metric-box">
-                                                <div class="metric-value-lg" data-translate="project2-value2">350+</div>
-                                                <div class="metric-label-sm" data-translate="project2-impact2">Flujos concurrentes</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="project-row-detail" id="project-detail-1">
+                        <p class="project-row-desc" data-translate="project1-desc">Automatización de procesamiento de compliance auditando 500K+ registros con reducción del 92% en latencia (6 horas → 45 minutos). Implementé framework de validación de calidad de datos con detección automática de anomalías.</p>
+                        <div class="project-row-actions">
+                            <span class="project-confidential-badge" data-translate="project-confidential">Proyecto Empresarial</span>
                         </div>
                     </div>
-
-                    <!-- Project 3: Data Normalization Tool -->
-                    <div class="swiper-slide">
-                        <div class="project-slide-card">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="project-image-wrapper">
-                                        <div class="project-number-badge">03</div>
-                                        <img src="images/truncation.png"
-                                             alt="Data Normalization Tool"
-                                             class="project-image-swiper">
-                                        <div class="project-image-overlay"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="project-content-wrapper">
-                                        <span class="project-status-badge" data-translate="project3-status">
-                                            <i class="fas fa-check-circle"></i> Producción (2024)
-                                        </span>
-                                        <h3 class="project-title-swiper" data-translate="project3-title">
-                                            Herramienta Inteligente de Normalización de Datos
-                                        </h3>
-                                        <p class="project-description-swiper" data-translate="project3-desc">
-                                            Aplicación desktop PyQt6 con algoritmo de fuzzy matching (85% precisión) para
-                                            normalización automatizada de datos. Reduce entrada manual de datos en 4 horas por semana.
-                                        </p>
-
-                                        <div class="project-tech-stack">
-                                            <span class="tech-badge-swiper">Python</span>
-                                            <span class="tech-badge-swiper">PyQt6</span>
-                                            <span class="tech-badge-swiper">Fuzzy Matching</span>
-                                            <span class="tech-badge-swiper">Desktop App</span>
-                                        </div>
-
-                                        <div class="project-actions">
-                                            <div class="btn-project-confidential">
-                                                <i class="fas fa-briefcase"></i>
-                                                <span data-translate="project-confidential">Proyecto Empresarial</span>
-                                            </div>
-                                        </div>
-
-                                        <div class="project-metrics-grid">
-                                            <div class="metric-box">
-                                                <div class="metric-value-lg" data-translate="project3-value1">4h</div>
-                                                <div class="metric-label-sm" data-translate="project3-impact1">Horas ahorradas/sem</div>
-                                            </div>
-                                            <div class="metric-box">
-                                                <div class="metric-value-lg" data-translate="project3-value2">85%</div>
-                                                <div class="metric-label-sm" data-translate="project3-impact2">Precisión automatización</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project 4: Databricks Medallion -->
-                    <div class="swiper-slide">
-                        <div class="project-slide-card">
-                            <div class="row g-0 align-items-center">
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="project-image-wrapper">
-                                        <div class="project-number-badge">04</div>
-                                        <img src="images/ETL_Databricks.png"
-                                             alt="Databricks Medallion Project"
-                                             class="project-image-swiper project-image-cover">
-                                        <div class="project-image-overlay"></div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-12">
-                                    <div class="project-content-wrapper">
-                                        <span class="project-status-badge" data-translate="project4-status">
-                                            <i class="fas fa-check-circle"></i> Producción (2024)
-                                        </span>
-                                        <h3 class="project-title-swiper" data-translate="project4-title">
-                                            Proyecto de Medallion Architecture en Databricks
-                                        </h3>
-                                        <p class="project-description-swiper" data-translate="project4-desc">
-                                            Pipeline ETL end-to-end con arquitectura medallion (Bronze→Silver→Gold) procesando +100K transacciones. 
-                                            Implementa PySpark, Delta Lake y Great Expectations para calidad de datos, con dashboard Streamlit interactivo.
-                                        </p>
-
-                                        <div class="project-tech-stack">
-                                            <span class="tech-badge-swiper">PySpark</span>
-                                            <span class="tech-badge-swiper">SparkSQL</span>
-                                            <span class="tech-badge-swiper">Streamlit</span>
-                                            <span class="tech-badge-swiper">Databricks</span>
-                                        </div>
-
-                                        <div class="project-actions">
-                                            <a href="https://github.com/JosePicado07/ecommerce-pipeline-production"
-                                               target="_blank"
-                                               rel="noopener noreferrer"
-                                               class="btn-project-action">
-                                                <i class="fab fa-github"></i>
-                                                <span data-translate="project-view-code">Ver Código</span>
-                                            </a>
-                                        </div>
-
-                                        <div class="project-metrics-grid">
-                                            <div class="metric-box">
-                                                <div class="metric-value-lg" data-translate="project4-value1">100K+</div>
-                                                <div class="metric-label-sm" data-translate="project4-impact1">Transacciones procesadas</div>
-                                            </div>
-                                            <div class="metric-box">
-                                                <div class="metric-value-lg" data-translate="project4-value2">3 capas</div>
-                                                <div class="metric-label-sm" data-translate="project4-impact2">Arquitectura Medallion</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
-                <!-- Swiper Navigation -->
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                <!-- Project 2 -->
+                <div class="project-row project-featured">
+                    <div class="project-row-header">
+                        <div class="project-row-top">
+                            <div class="project-row-heading">
+                                <span class="project-row-num" aria-hidden="true">02</span>
+                                <span class="project-row-title" data-translate="project2-title">Pipeline ETL SharePoint-to-Power BI</span>
+                            </div>
+                            <svg class="project-row-toggle-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true">
+                                <path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="project-row-metric">
+                            <span class="project-row-value" data-translate="project2-value1">80%</span>
+                            <span class="project-row-label" data-translate="project2-impact1">Reducción procesamiento</span>
+                        </div>
+                        <div class="project-row-footer">
+                            <span class="project-row-stack">Python · OAuth 2.0 · Power BI · SharePoint API</span>
+                            <span class="project-row-status" data-translate="project2-status">Producción (2024)</span>
+                        </div>
+                    </div>
+                    <div class="project-row-detail" id="project-detail-2">
+                        <p class="project-row-desc" data-translate="project2-desc">Pipeline de datos incremental end-to-end con autenticación OAuth 2.0, logrando 80% reducción en tiempo de procesamiento. Diseñado para scheduling diario confiable y recuperación de errores.</p>
+                        <div class="project-row-actions">
+                            <span class="project-confidential-badge" data-translate="project-confidential">Proyecto Empresarial</span>
+                        </div>
+                    </div>
+                </div>
 
-                <!-- Swiper Pagination -->
-                <div class="swiper-pagination"></div>
+                <!-- Project 3 -->
+                <div class="project-row">
+                    <div class="project-row-header">
+                        <div class="project-row-top">
+                            <div class="project-row-heading">
+                                <span class="project-row-num" aria-hidden="true">03</span>
+                                <span class="project-row-title" data-translate="project3-title">Herramienta de Normalización de Datos</span>
+                            </div>
+                            <svg class="project-row-toggle-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true">
+                                <path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="project-row-metric">
+                            <span class="project-row-value" data-translate="project3-value1">4h</span>
+                            <span class="project-row-label" data-translate="project3-impact1">Horas ahorradas/sem</span>
+                        </div>
+                        <div class="project-row-footer">
+                            <span class="project-row-stack">Python · PyQt6 · Fuzzy Matching · Desktop App</span>
+                            <span class="project-row-status" data-translate="project3-status">Producción (2024)</span>
+                        </div>
+                    </div>
+                    <div class="project-row-detail" id="project-detail-3">
+                        <p class="project-row-desc" data-translate="project3-desc">Aplicación desktop PyQt6 con algoritmo de fuzzy matching (85% precisión) para normalización automatizada de datos. Reduce entrada manual de datos en 4 horas por semana.</p>
+                        <div class="project-row-actions">
+                            <span class="project-confidential-badge" data-translate="project-confidential">Proyecto Empresarial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-row project-muted">
+                    <div class="project-row-header">
+                        <div class="project-row-top">
+                            <div class="project-row-heading">
+                                <span class="project-row-num" aria-hidden="true">04</span>
+                                <span class="project-row-title" data-translate="project4-title">Medallion Architecture en Databricks</span>
+                            </div>
+                            <svg class="project-row-toggle-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" aria-hidden="true">
+                                <path d="M8 3v10M3 8h10" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="project-row-metric">
+                            <span class="project-row-value" data-translate="project4-value1">100K+</span>
+                            <span class="project-row-label" data-translate="project4-impact1">Transacciones procesadas</span>
+                        </div>
+                        <div class="project-row-footer">
+                            <span class="project-row-stack">
+                                <abbr title="Python API for Apache Spark — distributed data processing">PySpark</abbr> ·
+                                <abbr title="Delta Lake — ACID transactions for data lakes">Delta Lake</abbr> ·
+                                <abbr title="Databricks — unified data platform">Databricks</abbr> ·
+                                <abbr title="Great Expectations — automated data quality validation framework">Great Expectations</abbr> ·
+                                <abbr title="Streamlit — Python framework for building data dashboards">Streamlit</abbr>
+                            </span>
+                            <span class="project-row-status" data-translate="project4-status">Académico (2024)</span>
+                        </div>
+                    </div>
+                    <div class="project-row-detail" id="project-detail-4">
+                        <p class="project-row-desc" data-translate="project4-desc">Pipeline ETL end-to-end con arquitectura medallion (Bronze→Silver→Gold) procesando +100K transacciones. Implementa PySpark, Delta Lake y Great Expectations para calidad de datos, con dashboard Streamlit interactivo.</p>
+                        <div class="project-row-actions">
+                            <span class="project-academic-badge" data-translate="project-academic">Proyecto Académico</span>
+                            <a href="https://ecommerce-pipeline-appuction-zzwnqgphtc6gapcamduktj.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn-view-project">
+                                <span data-translate="project-view-code">Ver Código</span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -532,71 +423,73 @@
     <section id="skills" class="skills-section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
+                <span class="section-number">03</span>
                 <h2 class="section-title" data-translate="skills-title">Skills</h2>
                 <div class="title-underline"></div>
             </div>
 
-            <div class="row g-4">
-                <!-- Skills Category 1: Languages -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="skill-category" data-translate="skills-cat1">Languages</h3>
-                        <ul class="skill-list">
-                            <li>Python 3.8+</li>
-                            <li>SQL / PL-SQL</li>
-                            <li>Java</li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="skills-index" data-aos="fade-up" data-aos-delay="100">
 
-                <!-- Skills Category 2: Data Engineering -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
+                        <div class="skill-row">
+                            <div class="skill-row-meta">
+                                <span class="skill-number">01</span>
+                                <span class="skill-category-label" data-translate="skills-cat1">Languages</span>
+                                <span class="skill-category-desc">Stored procedures · Validation · Automation</span>
+                            </div>
+                            <div class="skill-row-pills">
+                                <span class="skill-pill skill-pill-core">Python 3.8+</span>
+                                <span class="skill-pill skill-pill-core">SQL / PL-SQL</span>
+                                <span class="skill-pill">Java</span>
+                            </div>
                         </div>
-                        <h3 class="skill-category" data-translate="skills-cat2">Data Engineering</h3>
-                        <ul class="skill-list">
-                            <li>ETL Pipelines</li>
-                            <li>Apache Spark</li>
-                            <li>Pandas / Polars / Duckdb </li>
-                            <li>Data Quality</li>
-                        </ul>
-                    </div>
-                </div>
+                        <hr class="skill-divider">
 
-                <!-- Skills Category 3: Architecture -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-project-diagram"></i>
+                        <div class="skill-row">
+                            <div class="skill-row-meta">
+                                <span class="skill-number">02</span>
+                                <span class="skill-category-label" data-translate="skills-cat2">Data Engineering</span>
+                                <span class="skill-category-desc">Production pipelines · 500K+ records processed</span>
+                            </div>
+                            <div class="skill-row-pills">
+                                <span class="skill-pill skill-pill-core">ETL Pipelines</span>
+                                <span class="skill-pill skill-pill-core">Apache Spark</span>
+                                <span class="skill-pill">Pandas / Polars / DuckDB</span>
+                                <span class="skill-pill">Data Quality</span>
+                            </div>
                         </div>
-                        <h3 class="skill-category" data-translate="skills-cat3">Architecture</h3>
-                        <ul class="skill-list">
-                            <li>DDD Patterns</li>
-                            <li>System Design</li>
-                            <li>API Integration</li>
-                            <li>Scalability</li>
-                        </ul>
-                    </div>
-                </div>
+                        <hr class="skill-divider">
 
-                <!-- Skills Category 4: Cloud & Tools -->
-                <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <i class="fas fa-cloud"></i>
+                        <div class="skill-row">
+                            <div class="skill-row-meta">
+                                <span class="skill-number">03</span>
+                                <span class="skill-category-label" data-translate="skills-cat3">Architecture</span>
+                                <span class="skill-category-desc">Scalable systems built for enterprise data</span>
+                            </div>
+                            <div class="skill-row-pills">
+                                <span class="skill-pill skill-pill-core" title="Designing scalable, reliable systems with clear interfaces">System Design</span>
+                                <span class="skill-pill skill-pill-core" title="Building and integrating REST and custom APIs">API Integration</span>
+                                <span class="skill-pill" title="Domain-Driven Design — organizing code around business domains">DDD Patterns</span>
+                                <span class="skill-pill" title="Designing systems that grow efficiently with data">Scalability</span>
+                            </div>
                         </div>
-                        <h3 class="skill-category" data-translate="skills-cat4">Cloud & Tools</h3>
-                        <ul class="skill-list">
-                            <li>AWS Lambda</li>
-                            <li>Git / GitHub</li>
-                            <li>OAuth 2.0</li>
-                            <li>Monitoring</li>
-                        </ul>
+                        <hr class="skill-divider">
+
+                        <div class="skill-row">
+                            <div class="skill-row-meta">
+                                <span class="skill-number">04</span>
+                                <span class="skill-category-label" data-translate="skills-cat4">Workday Platform</span>
+                                <span class="skill-category-desc">HCM · Benefits · Payroll · Learning · DTS</span>
+                            </div>
+                            <div class="skill-row-pills">
+                                <span class="skill-pill skill-pill-core" title="Moving enterprise data into Workday during implementation">Data Conversion</span>
+                                <span class="skill-pill skill-pill-core" title="EIB: Enterprise Interface Builder — Workday's visual integration tool. iLoad: Integration Load — batch data loading">EIB / iLoad</span>
+                                <span class="skill-pill" title="Workday's IDE for developing integrations and reports">Workday Studio</span>
+                                <span class="skill-pill" title="Pre-built integrations for common enterprise systems (SAP, Salesforce, etc.)">Core Connectors</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -607,6 +500,7 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
+                <span class="section-number">04</span>
                 <h2 class="section-title" data-translate="contact-title">Contacto</h2>
                 <div class="title-underline"></div>
             </div>
@@ -621,8 +515,12 @@
                             Consultoría Data Engineering • Automatización • Arquitectura ETL • Optimización
                         </p>
 
+                        <p class="contact-help-text">
+                            <strong data-translate="contact-expect-title">¿Qué esperar?</strong><span data-translate="contact-expect-body"> Responderé en 24h con un análisis inicial. También disponible por </span><a href="https://wa.me/50684756191">WhatsApp</a><span data-translate="contact-expect-end"> para consultas rápidas.</span>
+                        </p>
+
                         <div class="contact-links">
-                            <a href="mailto:jpicado011@gmail.com" class="contact-link">
+                            <a href="mailto:jpicado011@gmail.com?subject=Portfolio%20Inquiry" class="contact-link">
                                 <i class="fas fa-envelope"></i>
                                 <span>jpicado011@gmail.com</span>
                             </a>
@@ -652,7 +550,7 @@
                         <form id="contactForm" class="contact-form">
                             <div class="form-group">
                                 <label for="name" data-translate="form-name">Nombre</label>
-                                <input type="text" id="name" name="name" class="form-control" required>
+                                <input type="text" id="name" name="name" class="form-control" required maxlength="100">
                             </div>
 
                             <div class="form-group">
@@ -662,13 +560,17 @@
 
                             <div class="form-group">
                                 <label for="message" data-translate="form-message">Mensaje</label>
-                                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                                <textarea id="message" name="message" class="form-control" rows="5" required maxlength="1000"></textarea>
                             </div>
 
-                            <button type="submit" class="btn-submit" data-translate="form-submit">Enviar</button>
-
-                            <!-- Lottie Loading Animation -->
-                            <div id="lottieLoader" style="display: none; width: 120px; height: 120px; margin: 20px auto;"></div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-submit" id="submitBtn" data-translate="form-submit">Enviar</button>
+                                <button type="button" class="btn-submit btn-retry" id="retryBtn" style="display: none;">Intentar de nuevo</button>
+                                <div class="form-loading" id="formLoading" style="display: none;">
+                                    <span class="spinner"></span>
+                                    <span data-translate="form-sending">Enviando...</span>
+                                </div>
+                            </div>
 
                             <div id="formStatus" class="form-status" role="status" aria-live="polite" aria-atomic="true"></div>
                         </form>
@@ -721,9 +623,6 @@
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Swiper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
     <!-- GSAP Animation Library (Premium animations) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -731,11 +630,12 @@
     <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
+    <!-- Lottie Animation Player -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest"></script>
+
     <!-- Custom JavaScript -->
     <script src="js/language.js"></script>
     <script src="js/main.js"></script>
 
-    <!-- Floating Buttons Fix - DEFINITIVE SOLUTION -->
-    <script src="js/floating-buttons-fix.js"></script>
 </body>
 </html>

@@ -52,6 +52,7 @@ yarn.lock
 .env.local
 .env.development
 .env.production
+env
 
 # ========== Build Files ==========
 dist/
@@ -97,3 +98,20 @@ tests/
 *.test.js
 coverage/
 .nyc_output/
+
+# ========== Claude Code Tooling ==========
+.agents/
+memory/
+screenshots/
+skills-lock.json
+package.json
+package-lock.json
+node_modules/
+audit*.js
+critique-*.js
+final-*.js
+normalize-*.js
+polish-*.js
+test-*.js
+typeset-*.js
+verify-*.js
