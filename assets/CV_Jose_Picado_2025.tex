@@ -1,0 +1,209 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape José Andrés Picado Corrales} \\ \vspace{1pt}
+    \small +506 8475-6191 $|$
+    \href{mailto:jpicado011@gmail.com}{\underline{jpicado011@gmail.com}} $|$
+    \href{https://linkedin.com/in/josé-andrés-picado-corrales-a10a28173}{\underline{LinkedIn}} $|$
+    \href{https://github.com/josepicado07}{\underline{GitHub}} $|$
+    \href{https://josepicado07.github.io/Portafolio_Jose_Picado/}{\underline{Portfolio}}
+\end{center}
+
+\vspace{-10pt}
+\begin{center}
+    \small{Workday Consultant and Data Engineer with 5+ years of professional experience. Specializes in enterprise data conversion, ETL pipeline development, and automation — including Workday implementations across HCM, Payroll, and Benefits modules. Reduced 6-hour audit processes to 45 minutes and built incremental pipelines handling 500K+ records.}
+\end{center}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Programming:} Python 3.8+ (Pandas, Polars, PyQt6), SQL, PL/SQL, Java \\
+     \textbf{Data Engineering:} ETL pipeline development, data quality frameworks, incremental loading patterns, Apache Spark \\
+     \textbf{Workday Platform:} Data Conversion (HCM, Benefits, Payroll, Payroll History, Learning), EIB, iLoad, Workday Studio, DTS \\
+     \textbf{APIs \& Integration:} RESTful API consumption, SharePoint API (OAuth 2.0), third-party integrations \\
+     \textbf{Cloud \& Tools:} AWS basics (Lambda, Cognito), Databricks, Git, structured logging \\
+     \textbf{Performance Optimization:} Polars implementation (5--10x performance gains), multi-core processing, memory optimization \\
+     \textbf{Database Systems:} Oracle EBS/Cloud, SAP EDI, MySQL, PostgreSQL \\
+     \textbf{Data Formats:} CSV, JSON processing and transformation workflows
+    }}
+\end{itemize}
+
+%-----------EXPERIENCE-----------
+\section{Professional Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Product Data Analyst}{July 2024 -- Present}
+      {World Wide Technology}{Costa Rica}
+      \resumeItemListStart
+        \resumeItem{Lead Workday Data Conversion for enterprise clients, mapping HR data from legacy systems (ADP, Dayforce) to Workday using SQL stored procedures across HCM, Benefits, Payroll, Payroll History, and Learning modules with iterative load-validate cycles}
+        \resumeItem{Built enterprise data pipeline extracting data from SharePoint, transforming and loading back to SharePoint, then automating Power BI connections with incremental loading, reducing processing time by 80\%}
+        \resumeItem{Developed production Python applications: audit system processing 500K+ records (6\,hrs\,$\rightarrow$\,45\,min), part number truncation tool, and automated compliance reporting pipeline}
+        \resumeItem{Implemented API integrations with OAuth 2.0 authentication for 350+ customer data flows, including SharePoint-to-Power BI automated pipelines and data validation workflows}
+        \resumeItem{Optimized data processing performance migrating from Pandas to Polars achieving 5--10x speed improvements and 75\% memory reduction across enterprise datasets}
+        \resumeItem{Created automated workflows including PyQt6 GUI applications, fuzzy matching algorithms (85\% accuracy), and real-time monitoring systems}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {EDI Analyst}{July 2023 -- July 2024}
+      {DXC Technology}{Remote}
+      \resumeItemListStart
+        \resumeItem{Achieved 95\% resolution rate troubleshooting SAP EDI data mapping and system connectivity issues}
+        \resumeItem{Monitored production data flows processing 200K+ daily records and supported new client EDI implementations}
+        \resumeItem{Collaborated with clients to resolve data transformation and integration challenges}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Inside Sales Engineer}{August 2022 -- July 2023}
+      {Emerson}{Escazú, Costa Rica}
+      \resumeItemListStart
+        \resumeItem{Improved sales conversion rates through systematic follow-up and technical solution development}
+        \resumeItem{Conducted technical reviews ensuring smooth operations and timely product delivery}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Content Test Specialist}{November 2021 -- July 2022}
+      {Amazon}{Heredia, Costa Rica}
+      \resumeItemListStart
+        \resumeItem{Maintained 98\% accuracy testing Alexa skills and new product features}
+        \resumeItem{Executed 500+ test cases for software and devices, reducing post-launch issues}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Universidad Cenfotec}{2021 -- 2026}
+      {Bachelor's Degree in Software Engineering}{Costa Rica}
+      \resumeItemListStart
+        \resumeItem{Currently 60\% completed — expected graduation December 2025}
+      \resumeItemListEnd
+    \resumeSubheading
+      {Growup Data Analytics}{2020 -- 2021}
+      {Data Analysis Certifications}{Costa Rica}
+      \resumeItemListStart
+        \resumeItem{Data Analysis with SQL $|$ Data Analysis with Power BI $|$ Data Visualization with Excel}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Key Projects}
+  \resumeSubHeadingListStart
+    \resumeProjectHeading
+      {\textbf{Enterprise Audit System} $|$ \emph{Python, Polars, Pandas}}{2024}
+      \resumeItemListStart
+        \resumeItem{Built production audit system processing 500K+ records, reducing audit time from 6 hours to 45 minutes (92\% reduction)}
+        \resumeItem{Implemented automated data quality validation and compliance reporting pipeline with anomaly detection}
+      \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{SharePoint-to-Power BI ETL Pipeline} $|$ \emph{Python, OAuth 2.0, SharePoint API}}{2024}
+      \resumeItemListStart
+        \resumeItem{Architected incremental ETL pipeline with OAuth 2.0 authentication, reducing processing time by 80\% across 350+ concurrent data flows}
+        \resumeItem{Implemented daily automated execution with built-in error recovery and monitoring}
+      \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{Intelligent Data Normalization Tool} $|$ \emph{Python, PyQt6, Fuzzy Matching}}{2024}
+      \resumeItemListStart
+        \resumeItem{Developed PyQt6 desktop application with fuzzy matching algorithm achieving 85\% accuracy for automated data normalization}
+        \resumeItem{Reduced manual data entry by 4 hours per week across enterprise datasets}
+      \resumeItemListEnd
+    \resumeProjectHeading
+      {\textbf{Databricks Medallion Architecture Pipeline} $|$ \emph{PySpark, Delta Lake, Great Expectations}}{2024}
+      \resumeItemListStart
+        \resumeItem{Built end-to-end ETL pipeline with Bronze/Silver/Gold architecture processing 100K+ transactions with automated data quality validation}
+        \resumeItem{Implemented interactive Streamlit dashboard for pipeline monitoring and analytics}
+      \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     Técnico Superior en Desarrollo de Software $|$
+     Python para el análisis de datos $|$
+     Scrum Fundamentals Certified (SFC) $|$
+     Cert Prep: Scrum Master $|$
+     SAP for Beginners
+    }}
+\end{itemize}
+
+\end{document}
