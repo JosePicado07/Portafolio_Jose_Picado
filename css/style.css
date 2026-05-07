@@ -2313,16 +2313,9 @@ section + section {
         letter-spacing: 0.02em;
     }
 
-    /* Mobile: constrained GIF below hero content */
+    /* Mobile: GIF hidden — hero content fills viewport cleanly on tall phones */
     .hero-visualization {
-        display: flex;
-        max-height: 160px;
-        margin-top: var(--space-md);
-    }
-
-    .hero-viz-gif {
-        height: 160px;
-        width: auto;
+        display: none;
     }
 
     /* Mobile: 2-column CTA grid — View Projects + Let's Talk side by side, Download CV full width below */
@@ -2384,7 +2377,7 @@ section + section {
         min-height: 100svh;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         padding-top: clamp(2.5rem, 8vw, 3.5rem);
     }
 
@@ -2397,7 +2390,7 @@ section + section {
         min-height: 100svh;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
     }
 
     .skills-section > .container {
@@ -2413,7 +2406,7 @@ section + section {
         min-height: 100svh;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         padding-top: 2rem;
     }
 
