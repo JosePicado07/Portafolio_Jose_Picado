@@ -44,6 +44,12 @@ window.addEventListener('load', function() {
     // This prevents layout shifts during navigation
     forceAnimateAllAOS();
 
+    // Recalculate ScrollTrigger positions after full layout paint
+    // Needed because section min-height:100svh affects element offsets
+    if (typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.refresh();
+    }
+
     // Wait for animations to settle, then enable smooth scroll
     setTimeout(() => {
         setupSmoothScroll();
@@ -682,9 +688,8 @@ function initGSAPAnimations() {
             duration: 0.8,
             scrollTrigger: {
                 trigger: title,
-                start: 'top 85%',
-                end: 'bottom 60%',
-                toggleActions: 'play none none reverse'
+                start: 'top 90%',
+                toggleActions: 'play none none none'
             }
         });
     });
@@ -697,9 +702,8 @@ function initGSAPAnimations() {
         stagger: 0.1,
         scrollTrigger: {
             trigger: '.skills-section',
-            start: 'top 75%',
-            end: 'bottom 60%',
-            toggleActions: 'play none none reverse'
+            start: 'top 90%',
+            toggleActions: 'play none none none'
         }
     });
 
