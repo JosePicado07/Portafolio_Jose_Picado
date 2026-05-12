@@ -2377,8 +2377,8 @@ section + section {
         min-height: 100svh;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        padding-top: clamp(2.5rem, 8vw, 3.5rem);
+        justify-content: flex-start;
+        padding-top: 1.5rem;
     }
 
     .about-section > .container {
@@ -2390,7 +2390,8 @@ section + section {
         min-height: 100svh;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        padding-top: 1.5rem;
     }
 
     .skills-section > .container {
@@ -2406,8 +2407,8 @@ section + section {
         min-height: 100svh;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        padding-top: 2rem;
+        justify-content: flex-start;
+        padding-top: 1.5rem;
     }
 
     .contact-section > .container {
@@ -2610,6 +2611,11 @@ section + section {
 
 /* Tablet — Contact section single-column refinement (Bootstrap col-lg kicks in at 992px) */
 @media (min-width: 768px) and (max-width: 991px) {
+    /* Extra bottom padding so browser chrome (URL bar ~80px) can't expose the next section */
+    .skills-section {
+        padding-bottom: 6rem;
+    }
+
     .contact-info {
         padding-right: 0;
         margin-bottom: var(--space-xl);
