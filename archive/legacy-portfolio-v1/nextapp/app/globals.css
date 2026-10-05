@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens: Font Families ─────────────────────────────────────── */
+@theme inline {
+  --font-display: var(--font-syne), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  --font-body: var(--font-barlow), sans-serif;
+
+  /* Fixed brand colors */
+  --color-cobalt: oklch(44% 0.26 255);
+  --color-cobalt-light: oklch(60% 0.24 255);
+  --color-emerald: oklch(46% 0.19 162);
+  --color-emerald-light: oklch(55% 0.18 162);
+}
+
+/* ─── Semantic Tokens: Light Mode (warm parchment) ─────────────────────── */
+:root {
+  --bg-base: oklch(96% 0.010 75);
+  --bg-elevated: oklch(93% 0.012 75);
+  --bg-card: oklch(89% 0.011 75);
+  --bg-card-hover: oklch(86% 0.012 75);
+  --ink: oklch(9% 0.010 260);
+  --ink-dim: oklch(28% 0.014 260);
+  --ink-muted: oklch(52% 0.010 260);
+  --brand: oklch(44% 0.26 255);
+  --brand-hover: oklch(38% 0.24 255);
+  --accent: oklch(46% 0.19 162);
+  --accent-hover: oklch(40% 0.17 162);
+  --border-color: oklch(84% 0.012 75);
+  --border-subtle: oklch(88% 0.010 75);
+  --grid-line: oklch(44% 0.26 255 / 0.06);
+  --shadow-sm: 0 1px 3px oklch(9% 0.010 260 / 0.08);
+  --shadow-md: 0 4px 16px oklch(9% 0.010 260 / 0.10);
+  --shadow-lg: 0 12px 40px oklch(9% 0.010 260 / 0.12);
+}
+
+/* ─── Semantic Tokens: Dark Mode ────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-base: oklch(6% 0.010 255);
+  --bg-elevated: oklch(10% 0.012 255);
+  --bg-card: oklch(14% 0.015 255);
+  --bg-card-hover: oklch(18% 0.016 255);
+  --ink: oklch(94% 0.005 80);
+  --ink-dim: oklch(72% 0.008 80);
+  --ink-muted: oklch(50% 0.010 255);
+  --brand: oklch(60% 0.24 255);
+  --brand-hover: oklch(66% 0.22 255);
+  --accent: oklch(55% 0.18 162);
+  --accent-hover: oklch(60% 0.17 162);
+  --border-color: oklch(22% 0.015 255);
+  --border-subtle: oklch(16% 0.012 255);
+  --grid-line: oklch(60% 0.24 255 / 0.06);
+  --shadow-sm: 0 1px 3px oklch(0% 0 0 / 0.30);
+  --shadow-md: 0 4px 16px oklch(0% 0 0 / 0.40);
+  --shadow-lg: 0 12px 40px oklch(0% 0 0 / 0.50);
+}
+
+/* ─── Custom Tailwind Utilities ─────────────────────────────────────────── */
+@utility bg-base { background-color: var(--bg-base); }
+@utility bg-elevated { background-color: var(--bg-elevated); }
+@utility bg-card { background-color: var(--bg-card); }
+@utility text-ink { color: var(--ink); }
+@utility text-ink-dim { color: var(--ink-dim); }
+@utility text-ink-muted { color: var(--ink-muted); }
+@utility text-brand { color: var(--brand); }
+@utility text-accent { color: var(--accent); }
+@utility border-subtle { border-color: var(--border-subtle); }
+@utility border-base { border-color: var(--border-color); }
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ─── Base Styles ───────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+::selection {
+  background-color: oklch(44% 0.26 255 / 0.2);
+  color: var(--ink);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-muted); }

@@ -1,117 +1,46 @@
-# José Picado Portfolio - .gitignore
-
-# ========== Operating System Files ==========
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.Spotlight-V100
-.Trashes
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-*.lnk
-
-# Linux
-*~
-
-# ========== IDE / Editor Files ==========
-# VS Code
-.vscode/
-*.code-workspace
-
-.claude/
-test-screenshots/
-
-# JetBrains IDEs
-.idea/
-*.iml
-
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-
-# Atom
-.atom/
-
-# ========== Development Files ==========
-# Node.js (if using any build tools)
+# ========== Dependencies ==========
 node_modules/
-npm-debug.log
-yarn-error.log
-package-lock.json
-yarn.lock
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
 
-# Environment variables
-.env
-.env.local
-.env.development
-.env.production
-env
-
-# ========== Build Files ==========
-dist/
+# ========== Next.js / build ==========
+.next/
+out/
 build/
-*.map
-
-# ========== Temporary Files ==========
-*.tmp
-*.temp
-*.log
-*.cache
-*.swp
-*.swo
-
-# ========== Backup Files ==========
-*.bak
-*.backup
-*~
-
-# ========== Project-Specific ==========
-# Don't ignore these - they should be committed
-# (This is just a reminder)
-# !images/
-# !css/
-# !js/
-# !assets/
-
-# Ignore large files or personal documents
-# (Add here if needed, for example:)
-# *.psd
-# *.ai
-# /assets/private/
-
-# ========== Email Configuration ==========
-# Don't commit EmailJS credentials
-# (Keep them in code comments or separate config)
-emailjs-config.js
-config.js
+*.tsbuildinfo
+next-env.d.ts
 
 # ========== Testing ==========
-test/
-tests/
-*.test.js
 coverage/
-.nyc_output/
 
-# ========== Claude Code Tooling ==========
-.agents/
-memory/
+# ========== Environment ==========
+.env*
+!.env.example
+env
+
+# ========== Vercel ==========
+.vercel
+
+# ========== Logs ==========
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ========== OS / Editor ==========
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.pem
+.vscode/
+.idea/
+
+# ========== Claude Code tooling ==========
+.claude/
+test-screenshots/
 screenshots/
-skills-lock.json
-package.json
-package-lock.json
-node_modules/
-audit*.js
-critique-*.js
-final-*.js
-normalize-*.js
-polish-*.js
-test-*.js
-typeset-*.js
-verify-*.js
