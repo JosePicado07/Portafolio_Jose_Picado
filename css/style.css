@@ -5,39 +5,37 @@
 
 /* ========== CSS VARIABLES ========== */
 :root {
-    /* === LIGHT MODE — Backgrounds (OKLCH, tinted toward brand hue) === */
-    --bg-primary:   oklch(98.5% 0.003 260);
-    --bg-secondary: oklch(96%   0.005 255);
-    --bg-tertiary:  oklch(93%   0.007 255);
-    --bg-elevated:  oklch(88% 0.008 255);
+    /* === LIGHT MODE — Backgrounds (warm parchment) === */
+    --bg-primary:   oklch(96%  0.010 75);
+    --bg-secondary: oklch(93%  0.012 75);
+    --bg-tertiary:  oklch(90%  0.012 75);
+    --bg-elevated:  oklch(87%  0.011 75);
 
     /* === Brand Colors === */
-    --brand-blue:       oklch(56% 0.20 250);
-    --brand-blue-dark:  oklch(48% 0.20 250);
-    --brand-green:      oklch(60% 0.14 162);
-    --brand-green-dark: oklch(52% 0.14 162);
-    --brand-purple:     oklch(58% 0.18 280);
-    --brand-cyan:       oklch(68% 0.15 210);
+    --brand-blue:       oklch(44% 0.26 255);
+    --brand-blue-dark:  oklch(36% 0.26 255);
+    --brand-green:      oklch(46% 0.19 162);
+    --brand-green-dark: oklch(38% 0.19 162);
 
     /* === Accent & Surface Tokens (solid — no gradients) === */
     --gradient-hero:    none;
-    --gradient-accent:  oklch(56% 0.20 250);    /* cobalt blue — replaces all gradient usages */
-    --gradient-card:    oklch(95.5% 0.006 255);  /* solid light surface */
+    --gradient-accent:  oklch(44% 0.26 255);    /* deep cobalt */
+    --gradient-card:    oklch(93%  0.010 75);    /* warm surface */
     --gradient-mesh:    none;
 
     /* === Text Colors === */
-    --text-primary:   oklch(15% 0.016 255);
-    --text-secondary: oklch(40% 0.014 255);
-    --text-tertiary:  oklch(62% 0.010 255);
+    --text-primary:   oklch(9%  0.010 260);
+    --text-secondary: oklch(28% 0.014 260);
+    --text-tertiary:  oklch(55% 0.010 260);
 
     /* === Surfaces (solid — no glassmorphism) === */
-    --glass-bg-light:     oklch(97.5% 0.004 255);
-    --glass-border-light: oklch(88%   0.008 255);
-    --glass-shadow:       0 4px 24px oklch(15% 0.016 255 / 0.08);
+    --glass-bg-light:     oklch(94%  0.010 75);
+    --glass-border-light: oklch(84%  0.012 75);
+    --glass-shadow:       0 4px 24px oklch(9% 0.010 260 / 0.08);
 
     /* === Form Inputs === */
-    --input-border: oklch(85% 0.010 255);
-    --input-bg:     oklch(100% 0 0);
+    --input-border: oklch(82% 0.012 75);
+    --input-bg:     oklch(99% 0.004 80);
 
     /* === Semantic Status Colors === */
     --color-error:   oklch(58% 0.22 25);
@@ -69,7 +67,8 @@
     --space-3xl: 6rem;
 
     /* === Typography === */
-    --font-display: 'Chivo', sans-serif;
+    --font-display: 'Syne', sans-serif;
+    --font-mono:    'JetBrains Mono', 'Courier New', monospace;
     --font-body:    'Barlow', sans-serif;
 
     /* === Transitions === */
@@ -79,34 +78,34 @@
 
 /* ========== DARK MODE VARIABLES ========== */
 [data-theme="dark"] {
-    /* === DARK MODE — Near-black backgrounds === */
-    --bg-primary:   oklch(7%  0.010 255);
-    --bg-secondary: oklch(10% 0.010 255);
-    --bg-tertiary:  oklch(13% 0.009 255);
-    --bg-elevated:  oklch(16% 0.009 255);
+    /* === DARK MODE — Deep obsidian === */
+    --bg-primary:   oklch(6%  0.010 255);
+    --bg-secondary: oklch(9%  0.010 255);
+    --bg-tertiary:  oklch(12% 0.009 255);
+    --bg-elevated:  oklch(15% 0.009 255);
 
-    /* === Brand (slightly vivid for dark contrast) === */
-    --brand-blue:       oklch(63% 0.19 248);
-    --brand-blue-dark:  oklch(55% 0.20 248);
-    --brand-green:      oklch(67% 0.13 162);
-    --brand-green-dark: oklch(58% 0.14 162);
+    /* === Brand (vivid for dark contrast) === */
+    --brand-blue:       oklch(68% 0.22 248);
+    --brand-blue-dark:  oklch(58% 0.22 248);
+    --brand-green:      oklch(72% 0.16 162);
+    --brand-green-dark: oklch(62% 0.16 162);
 
     /* === Accent & Surface === */
-    --gradient-accent: oklch(63% 0.19 248);
-    --gradient-card:   oklch(17% 0.012 255);
+    --gradient-accent: oklch(68% 0.22 248);
+    --gradient-card:   oklch(15% 0.012 255);
 
     /* === Text === */
-    --text-primary:   oklch(95% 0.005 75);
-    --text-secondary: oklch(78% 0.008 255);
-    --text-tertiary:  oklch(68% 0.010 255);
+    --text-primary:   oklch(94% 0.005 80);
+    --text-secondary: oklch(76% 0.007 80);
+    --text-tertiary:  oklch(62% 0.008 255);
 
     /* === Surfaces === */
-    --glass-bg-light:     oklch(17% 0.012 255);
-    --glass-border-light: oklch(28% 0.012 255);
+    --glass-bg-light:     oklch(15% 0.012 255);
+    --glass-border-light: oklch(26% 0.012 255);
 
     /* === Form Inputs === */
-    --input-border: oklch(30% 0.012 255);
-    --input-bg:     oklch(16% 0.014 255);
+    --input-border: oklch(28% 0.012 255);
+    --input-bg:     oklch(14% 0.014 255);
 
     /* === Shadows === */
     --shadow-sm:  0 2px 8px  rgba(0, 0, 0, 0.35);
@@ -440,7 +439,7 @@ section {
     z-index: 10;
 }
 
-/* Subtle dot grid — static, no animation */
+/* Fine line grid — architectural, static */
 .hero-section::before {
     content: '';
     position: absolute;
@@ -448,8 +447,10 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle, oklch(63% 0.19 248 / 0.12) 1px, transparent 1px);
-    background-size: 28px 28px;
+    background-image:
+        linear-gradient(to right, oklch(44% 0.26 255 / 0.055) 1px, transparent 1px),
+        linear-gradient(to bottom, oklch(44% 0.26 255 / 0.055) 1px, transparent 1px);
+    background-size: 48px 48px;
     z-index: 0;
     pointer-events: none;
 }
@@ -522,7 +523,7 @@ section {
 .hero-name-1 {
     font-family: var(--font-display);
     font-size: clamp(3rem, 7vw, 4.5rem);
-    font-weight: 900;
+    font-weight: 800;
     line-height: 0.95;
     letter-spacing: -0.04em;
     color: var(--text-primary);
@@ -530,23 +531,23 @@ section {
 
 .hero-name-2 {
     font-family: var(--font-display);
-    font-size: clamp(4rem, 11vw, 6rem);
-    font-weight: 900;
-    line-height: 0.88;
-    letter-spacing: -0.05em;
+    font-size: clamp(5.5rem, 14vw, 9.5rem);
+    font-weight: 800;
+    line-height: 0.86;
+    letter-spacing: -0.055em;
     color: var(--text-primary);
 }
 
 /* Tablet — explicit override */
 @media (max-width: 1023px) {
     .hero-name-1 { font-size: clamp(2rem, 6vw, 3.5rem); }
-    .hero-name-2 { font-size: clamp(3rem, 10vw, 4.5rem); letter-spacing: -0.04em; }
+    .hero-name-2 { font-size: clamp(4rem, 12vw, 6.5rem); letter-spacing: -0.05em; }
 }
 
 /* Mobile — explicit override */
 @media (max-width: 767px) {
     .hero-name-1 { font-size: clamp(1.5rem, 6vw, 2.5rem); line-height: 1.0; }
-    .hero-name-2 { font-size: clamp(2rem, 8vw, 3rem); line-height: 0.95; letter-spacing: -0.03em; }
+    .hero-name-2 { font-size: clamp(3rem, 10vw, 4.5rem); line-height: 0.92; letter-spacing: -0.04em; }
 }
 
 
@@ -562,12 +563,11 @@ section {
 /* Pain/Solution Hook */
 .hero-pain-hook {
     font-size: clamp(1rem, 2.2vw, 1.25rem);
-    font-weight: 600;
-    color: var(--brand-blue);
+    font-weight: 700;
+    color: var(--brand-green);
     line-height: 1.4;
     margin-bottom: 0.25rem;
     max-width: 480px;
-    font-style: italic;
 }
 
 /* Hero Content Layout - Desktop 2-column */
@@ -635,11 +635,13 @@ section {
 }
 
 .hero-stat-number {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 900;
+    font-weight: 700;
     color: var(--brand-blue);
     line-height: 1;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
 }
 
 .hero-stat-label {
@@ -950,13 +952,14 @@ section {
 
 .section-number {
     display: block;
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 0.75rem;
-    font-weight: 900;
-    letter-spacing: -0.02em;
-    color: var(--text-tertiary);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--brand-blue);
     text-transform: uppercase;
     margin-bottom: 0.75rem;
+    opacity: 0.7;
 }
 
 .section-eyebrow {
@@ -976,7 +979,7 @@ section {
     font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: var(--space-md);
     color: var(--text-primary);
-    font-weight: 900;
+    font-weight: 800;
     letter-spacing: -0.03em;
 }
 
@@ -1161,9 +1164,10 @@ section + section {
 }
 
 .metric-value {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 2.5rem;
-    font-weight: 900;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
     line-height: 1;
     color: var(--brand-blue);
     margin-bottom: var(--space-xs);
@@ -1244,13 +1248,13 @@ section + section {
 
 /* Number badge */
 .project-row-num {
-    font-family: var(--font-display);
-    font-size: 0.875rem;
-    font-weight: 900;
-    color: var(--text-secondary);
-    letter-spacing: 0.05em;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--brand-blue);
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    opacity: 1;
+    opacity: 0.7;
     flex-shrink: 0;
 }
 
@@ -1289,11 +1293,13 @@ section + section {
 }
 
 .project-row-value {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1;
     color: var(--brand-blue);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
 }
 
 .project-row-label {
@@ -1510,11 +1516,12 @@ section + section {
 }
 
 .skill-number {
-    font-family: var(--font-display);
+    font-family: var(--font-mono);
     font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    color: var(--text-tertiary);
-    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--brand-blue);
+    font-weight: 600;
+    opacity: 0.7;
 }
 
 .skill-category-label {
@@ -2167,7 +2174,7 @@ section + section {
     }
 
     .hero-heading {
-        font-size: clamp(3.5rem, 7vw, 5rem) !important;
+        font-size: clamp(5rem, 10vw, 9rem) !important;
         margin-bottom: 0.5rem;
     }
 
@@ -2303,7 +2310,7 @@ section + section {
     }
 
     .hero-stat-number {
-        font-size: clamp(1.25rem, 4vw, 1.75rem);
+        font-size: clamp(1.4rem, 5vw, 2rem);
     }
 
     .hero-stat-label {
