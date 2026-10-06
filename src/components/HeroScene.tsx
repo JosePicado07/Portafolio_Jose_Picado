@@ -4,16 +4,15 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import * as THREE from "three";
 
-const ROWS = 14;
-const COLS = 14;
-const PER_CELL = 2;
-const REJECT_RATE = 0.05;
-const GHOSTS_PER_SOURCE = 70;
-const SRC_X = -3.0;
-const GATE_X = -0.75;
-const TABLE_X0 = 0.2;
-const CELL = 0.24;
-const ROW_H = 0.2;
+import {
+  CELL,
+  COLS,
+  GATE_X,
+  TABLE_X0,
+  buildRecords,
+  tableHeight,
+} from "@/lib/conversion-flow";
+
 const LOAD_MS = 3200;
 const SIGNAL_START = 0.8;
 const ROT0 = -0.16;
@@ -67,15 +66,6 @@ const POINT_FRAGMENT = /* glsl */ `
   }
 `;
 
-type RecordData = {
-  start: THREE.Vector3;
-  target: THREE.Vector3;
-  reject: boolean;
-  ghost: boolean;
-  status: number;
-  delay: number;
-};
-
 type Palette = {
   raw: THREE.Color;
   clean: THREE.Color;
@@ -125,75 +115,8 @@ function usePrefersReducedMotion() {
   return reduced;
 }
 
-function buildRecords(): RecordData[] {
-  let seed = 11;
-  const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
-  const gauss = () => (rand() + rand() + rand() - 1.5) / 1.5;
-
-  const sources = [
-    { y: 1.15, spread: [0.75, 0.3] },
-    { y: 0.0, spread: [0.9, 0.24] },
-    { y: -1.15, spread: [0.65, 0.32] },
-  ];
-
-  const records: RecordData[] = [];
-  const tableH = (ROWS - 1) * ROW_H;
-
-  for (let r = 0; r < ROWS; r++) {
-    for (let c = 0; c < COLS; c++) {
-      for (let k = 0; k < PER_CELL; k++) {
-        const src = sources[(r * 7 + c * 3 + k) % 3];
-        const start = new THREE.Vector3(
-          SRC_X + gauss() * src.spread[0],
-          src.y + gauss() * src.spread[1],
-          gauss() * 0.8,
-        );
-        const target = new THREE.Vector3(
-          TABLE_X0 + c * CELL,
-          tableH / 2 - r * ROW_H,
-          (k - 0.5) * 0.04,
-        );
-        const reject = rand() < REJECT_RATE;
-        if (reject) {
-          target.set(
-            GATE_X + 0.1 + rand() * 0.5,
-            -tableH / 2 - 0.45 - rand() * 0.3,
-            gauss() * 0.2,
-          );
-        }
-        const delay =
-          Math.min(0.45, Math.max(0, (start.x - (SRC_X - 1.2)) / 2.4) * 0.12 + rand() * 0.33);
-        records.push({
-          start,
-          target,
-          reject,
-          ghost: false,
-          status: !reject && c === COLS - 1 ? 1 : 0,
-          delay,
-        });
-      }
-    }
-  }
-
-  sources.forEach((src) => {
-    for (let g = 0; g < GHOSTS_PER_SOURCE; g++) {
-      const q = new THREE.Vector3(
-        SRC_X + gauss() * src.spread[0] * 1.2,
-        src.y + gauss() * src.spread[1] * 1.2,
-        gauss() * 0.8,
-      );
-      records.push({
-        start: q,
-        target: q.clone(),
-        reject: false,
-        ghost: true,
-        status: 0,
-        delay: 0,
-      });
-    }
-  });
-
-  return records;
+function toVector(tuple: [number, number, number]) {
+  return new THREE.Vector3(tuple[0], tuple[1], tuple[2]);
 }
 
 function ConversionFlow() {
@@ -210,7 +133,7 @@ function ConversionFlow() {
 
   const records = useMemo(buildRecords, []);
   const palette = useMemo(readPalette, []);
-  const tableH = (ROWS - 1) * ROW_H;
+  const tableH = tableHeight();
 
   const geometryData = useMemo(() => {
     const n = records.length;
@@ -220,10 +143,10 @@ function ConversionFlow() {
     const aKind = new Float32Array(n);
     const aStatus = new Float32Array(n);
     records.forEach((rec, i) => {
-      position.set(rec.target.toArray(), i * 3);
-      aStart.set(rec.start.toArray(), i * 3);
+      position.set(toVector(rec.target).toArray(), i * 3);
+      aStart.set(toVector(rec.start).toArray(), i * 3);
       aDelay[i] = rec.delay;
-      aKind[i] = rec.ghost ? 2 : rec.reject ? 1 : 0;
+      aKind[i] = rec.kind;
       aStatus[i] = rec.status;
     });
     return { position, aStart, aDelay, aKind, aStatus };

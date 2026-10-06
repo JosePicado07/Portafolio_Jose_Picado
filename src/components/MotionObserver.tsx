@@ -5,14 +5,25 @@ import { useEffect } from "react";
 const REVEAL_SELECTOR = "[data-reveal], [data-draw]";
 const GROUP_SELECTOR = "[data-draw-group]";
 
+function intersectsViewport(element: Element) {
+  const rect = element.getBoundingClientRect();
+  return (
+    rect.bottom > 0 &&
+    rect.top < window.innerHeight &&
+    rect.right > 0 &&
+    rect.left < window.innerWidth
+  );
+}
+
 export default function MotionObserver() {
   useEffect(() => {
-    let ready = false;
-    const markReady = () => {
-      if (ready) return;
-      ready = true;
-      document.documentElement.classList.add("motion-ready");
-    };
+    const pending: Element[] = [];
+    for (const target of Array.from(
+      document.querySelectorAll(`${REVEAL_SELECTOR}, ${GROUP_SELECTOR}`),
+    )) {
+      if (intersectsViewport(target)) target.setAttribute("data-in", "true");
+      else pending.push(target);
+    }
 
     const handleEntries = (
       entries: IntersectionObserverEntry[],
@@ -23,7 +34,6 @@ export default function MotionObserver() {
         entry.target.setAttribute("data-in", "true");
         observer.unobserve(entry.target);
       }
-      markReady();
     };
 
     const revealObserver = new IntersectionObserver(handleEntries, {
@@ -36,20 +46,17 @@ export default function MotionObserver() {
       rootMargin: "0px 0px -10% 0px",
     });
 
-    const revealTargets = Array.from(
-      document.querySelectorAll(REVEAL_SELECTOR),
-    );
-    const groupTargets = Array.from(document.querySelectorAll(GROUP_SELECTOR));
-
-    if (revealTargets.length === 0 && groupTargets.length === 0) {
-      markReady();
-      return;
+    for (const target of pending) {
+      if (target.matches(GROUP_SELECTOR)) groupObserver.observe(target);
+      else revealObserver.observe(target);
     }
 
-    revealTargets.forEach((target) => revealObserver.observe(target));
-    groupTargets.forEach((target) => groupObserver.observe(target));
+    const frame = requestAnimationFrame(() =>
+      document.documentElement.classList.add("motion-ready"),
+    );
 
     return () => {
+      cancelAnimationFrame(frame);
       revealObserver.disconnect();
       groupObserver.disconnect();
     };

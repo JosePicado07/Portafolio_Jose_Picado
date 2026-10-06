@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { Geist } from "next/font/google";
 import MotionObserver from "@/components/MotionObserver";
 import "./globals.css";
+
+const HEAD_SCRIPT = `try{var d=document.documentElement,m=matchMedia('(prefers-reduced-motion: reduce)').matches,n=(performance.getEntriesByType('navigation')[0]||{}).type;if(!m&&!location.hash&&n!=='reload'&&n!=='back_forward')d.classList.add('motion-ok');if(!m&&(navigator.hardwareConcurrency||8)>4&&(navigator.deviceMemory||8)>4&&!(navigator.connection&&navigator.connection.saveData)){try{var c=document.createElement('canvas');if(c.getContext('webgl2')||c.getContext('webgl'))d.classList.add('webgl-ok')}catch(e){}}}catch(e){}`;
 
 const geist = Geist({
   weight: ["400", "600"],
@@ -23,10 +24,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: HEAD_SCRIPT }} />
+      </head>
       <body className={`${geist.variable} antialiased`}>
-        <Script id="motion-ok" strategy="beforeInteractive">
-          {`if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-ok')`}
-        </Script>
         <MotionObserver />
         {children}
       </body>

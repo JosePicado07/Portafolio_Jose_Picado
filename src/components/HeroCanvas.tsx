@@ -9,26 +9,30 @@ const HeroScene = dynamic(() => import("./HeroScene"), {
 });
 
 export default function HeroCanvas() {
-  const [ready, setReady] = useState(false);
+  const [mode, setMode] = useState<"unknown" | "webgl" | "poster">("unknown");
 
   useEffect(() => {
+    if (!document.documentElement.classList.contains("webgl-ok")) {
+      setMode("poster");
+      return;
+    }
     if (
       typeof window !== "undefined" &&
       "requestIdleCallback" in window &&
       typeof window.requestIdleCallback === "function"
     ) {
-      const id = window.requestIdleCallback(() => setReady(true), {
+      const id = window.requestIdleCallback(() => setMode("webgl"), {
         timeout: 1200,
       });
       return () => window.cancelIdleCallback?.(id);
     }
-    const timer = window.setTimeout(() => setReady(true), 200);
+    const timer = window.setTimeout(() => setMode("webgl"), 200);
     return () => window.clearTimeout(timer);
   }, []);
 
   return (
     <div className="hero__canvas" aria-hidden="true">
-      {ready ? <HeroScene /> : null}
+      {mode === "webgl" ? <HeroScene /> : null}
     </div>
   );
 }
