@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import type { Dictionary } from "@/content/en";
 
 type FieldName = "name" | "email" | "message";
@@ -74,6 +74,12 @@ export default function ContactForm({ form }: { form: Dictionary["contactForm"] 
   }, [fields, form.errors]);
 
   const statusRef = useRef<HTMLDivElement>(null);
+  const companyRef = useRef<HTMLInputElement>(null);
+  const mountedAt = useRef(0);
+
+  useEffect(() => {
+    mountedAt.current = Date.now();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -101,6 +107,21 @@ export default function ContactForm({ form }: { form: Dictionary["contactForm"] 
 
     submittingRef.current = true;
     setStatus("sending");
+
+    if (
+      (companyRef.current?.value ?? "") !== "" ||
+      Date.now() - mountedAt.current < 3000
+    ) {
+      setFields({
+        name: { value: "", error: "", touched: false },
+        email: { value: "", error: "", touched: false },
+        message: { value: "", error: "", touched: false },
+      });
+      setStatus("success");
+      statusRef.current?.focus({ preventScroll: true });
+      submittingRef.current = false;
+      return;
+    }
 
     try {
       const [emailjs, config] = await Promise.all([
@@ -234,6 +255,21 @@ export default function ContactForm({ form }: { form: Dictionary["contactForm"] 
             {fields.message.value.length} / 1000
           </span>
         </div>
+      </div>
+
+      <div className="field field--hp" aria-hidden="true">
+        <label htmlFor="company" className="field__label">
+          {form.honeypotLabel}
+        </label>
+        <input
+          ref={companyRef}
+          id="company"
+          name="company"
+          type="text"
+          autoComplete="off"
+          tabIndex={-1}
+          className="field__input"
+        />
       </div>
 
       <div className="form__footer">

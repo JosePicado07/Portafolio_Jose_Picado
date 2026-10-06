@@ -511,6 +511,7 @@ html.webgl-ok .hero__poster {
 .field__error { font-size:0.875rem; color:var(--color-error); min-height:1.4em; transition:opacity var(--motion-micro) var(--motion-ease); }
 .field__error[data-empty="true"] { opacity:0; }
 .field__meta { display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
+.field--hp { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
 .counter { font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-text-muted); }
 .form__title { font-weight:400; font-size:1.25rem; color:var(--color-text-primary); margin-bottom:24px; }
 .form__footer { display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }

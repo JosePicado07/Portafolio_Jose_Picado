@@ -237,6 +237,7 @@ export const contactSection = {
 
 export const contactForm = {
   title: "Send a message",
+  honeypotLabel: "Company (leave empty)",
   labels: { name: "Your name", email: "Your email", message: "What are you working on?" },
   submit: "Send message",
   submitting: "Sending…",

@@ -234,6 +234,7 @@ export const es = {
   },
   contactForm: {
     title: "Envía un mensaje",
+    honeypotLabel: "Empresa (dejar vacío)",
     labels: { name: "Tu nombre", email: "Tu correo", message: "¿En qué estás trabajando?" },
     submit: "Enviar mensaje",
     submitting: "Enviando…",
