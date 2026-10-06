@@ -4,19 +4,45 @@ import fs from 'fs';
 
 const browser = await puppeteer.launch({
   headless: true,
-  args: ['--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage'],
+  args: ['--no-sandbox', '--disable-dev-shm-usage'],
 });
 
 const wsUrl = browser.wsEndpoint();
 const port = new URL(wsUrl).port;
 
-const runnerResult = await lighthouse('http://localhost:3000', {
+const isDesktop = process.argv.includes('--desktop');
+const outFile = isDesktop
+  ? './lighthouse-report-desktop.html'
+  : './lighthouse-report.html';
+
+const flags = {
   port: Number(port),
   output: 'html',
   onlyCategories: ['accessibility', 'performance'],
-});
+};
 
-fs.writeFileSync('./lighthouse-report.html', runnerResult.report);
+if (isDesktop) {
+  flags.formFactor = 'desktop';
+  flags.screenEmulation = {
+    mobile: false,
+    width: 1350,
+    height: 940,
+    deviceScaleFactor: 1,
+    disabled: false,
+  };
+  flags.throttling = {
+    rttMs: 40,
+    throughputKbps: 10 * 1024,
+    cpuSlowdownMultiplier: 1,
+    requestLatencyMs: 0,
+    downloadThroughputKbps: 0,
+    uploadThroughputKbps: 0,
+  };
+}
+
+const runnerResult = await lighthouse('http://localhost:3000', flags);
+
+fs.writeFileSync(outFile, runnerResult.report);
 await browser.close();
 
 const perf = Math.round(runnerResult.lhr.categories.performance.score * 100);
@@ -27,7 +53,7 @@ console.log('=== Lighthouse Results ===');
 console.log('Performance:   ' + perf);
 console.log('Accessibility: ' + a11y);
 console.log('');
-console.log('Report: ./lighthouse-report.html');
+console.log('Report: ' + outFile);
 
 if (a11y < 95) {
   console.log('');

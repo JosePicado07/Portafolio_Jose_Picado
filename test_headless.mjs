@@ -18,7 +18,7 @@ async function run() {
       try {
         const text = await res.text();
         resps.push({ url, status: res.status(), body: text });
-      } catch (e) {}
+      } catch {}
     }
   });
   await page.goto('http://localhost:3000', { waitUntil: 'networkidle0' });
