@@ -1,9 +1,10 @@
 import type { CSSProperties } from "react";
-import { skillsSection, stages } from "@/content/en";
+import type { Dictionary } from "@/content/en";
 
 const DOT_DELAYS = [0, 230, 470, 700];
 
-export default function Skills() {
+export default function Skills({ dict }: { dict: Dictionary }) {
+  const { skillsSection, stages, aria } = dict;
   return (
     <section className="skills" id="skills" aria-labelledby="skills-title">
       <div className="container">
@@ -16,7 +17,7 @@ export default function Skills() {
           </h2>
         </header>
 
-        <ol className="pipeline" aria-label="Skills pipeline" data-draw-group>
+        <ol className="pipeline" aria-label={aria.skillsPipeline} data-draw-group>
           {stages.map((stage, stageIndex) => (
             <li
               key={stage.id}

@@ -1,8 +1,9 @@
-import { hero, urls } from "@/content/en";
+import type { Dictionary } from "@/content/en";
 import HeroCanvas from "./HeroCanvas";
 import HeroPoster from "./HeroPoster";
 
-export default function Hero() {
+export default function Hero({ dict }: { dict: Dictionary }) {
+  const { hero, urls } = dict;
   return (
     <section className="hero" id={hero.id} data-hero aria-labelledby="hero-title">
       <div className="container hero__grid">

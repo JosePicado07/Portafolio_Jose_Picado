@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { contactForm } from "@/content/en";
+import type { Dictionary } from "@/content/en";
 
 type FieldName = "name" | "email" | "message";
 
@@ -13,7 +13,29 @@ interface FormState {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
-export default function ContactForm() {
+type FormErrors = Dictionary["contactForm"]["errors"];
+
+function validateFieldValue(name: FieldName, value: string, errors: FormErrors): string {
+  const trimmed = value.trim();
+  switch (name) {
+    case "name":
+      if (!trimmed) return errors.nameRequired;
+      if (trimmed.length < 2) return errors.nameShort;
+      if (trimmed.length > 80) return errors.nameLong;
+      return "";
+    case "email":
+      if (!trimmed) return errors.emailRequired;
+      if (!EMAIL_REGEX.test(trimmed)) return errors.emailInvalid;
+      return "";
+    case "message":
+      if (!trimmed) return errors.messageRequired;
+      if (trimmed.length < 10) return errors.messageShort;
+      if (trimmed.length > 1000) return errors.messageLong;
+      return "";
+  }
+}
+
+export default function ContactForm({ form }: { form: Dictionary["contactForm"] }) {
   const [fields, setFields] = useState<Record<FieldName, FormState>>({
     name: { value: "", error: "", touched: false },
     email: { value: "", error: "", touched: false },
@@ -26,34 +48,14 @@ export default function ContactForm() {
   const emailRef = useRef<HTMLInputElement>(null);
   const messageRef = useRef<HTMLTextAreaElement>(null);
 
-  const validateField = useCallback((name: FieldName, value: string): string => {
-    const trimmed = value.trim();
-    switch (name) {
-      case "name":
-        if (!trimmed) return contactForm.errors.nameRequired;
-        if (trimmed.length < 2) return contactForm.errors.nameShort;
-        if (trimmed.length > 80) return contactForm.errors.nameLong;
-        return "";
-      case "email":
-        if (!trimmed) return contactForm.errors.emailRequired;
-        if (!EMAIL_REGEX.test(trimmed)) return contactForm.errors.emailInvalid;
-        return "";
-      case "message":
-        if (!trimmed) return contactForm.errors.messageRequired;
-        if (trimmed.length < 10) return contactForm.errors.messageShort;
-        if (trimmed.length > 1000) return contactForm.errors.messageLong;
-        return "";
-    }
-  }, []);
-
   const handleBlur = useCallback((e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const name = e.target.name as FieldName;
-    const error = validateField(name, e.target.value);
+    const error = validateFieldValue(name, e.target.value, form.errors);
     setFields((prev) => ({
       ...prev,
       [name]: { ...prev[name], touched: true, error },
     }));
-  }, [validateField]);
+  }, [form.errors]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const name = e.target.name as FieldName;
@@ -63,21 +65,21 @@ export default function ContactForm() {
       [name]: { ...prev[name], value },
     }));
     if (fields[name].touched) {
-      const error = validateField(name, value);
+      const error = validateFieldValue(name, value, form.errors);
       setFields((prev) => ({
         ...prev,
         [name]: { ...prev[name], error },
       }));
     }
-  }, [fields, validateField]);
+  }, [fields, form.errors]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const errors: Record<FieldName, string> = {
-      name: validateField("name", fields.name.value),
-      email: validateField("email", fields.email.value),
-      message: validateField("message", fields.message.value),
+      name: validateFieldValue("name", fields.name.value, form.errors),
+      email: validateFieldValue("email", fields.email.value, form.errors),
+      message: validateFieldValue("message", fields.message.value, form.errors),
     };
 
     const hasErrors = Object.values(errors).some((e) => e);
@@ -153,11 +155,11 @@ export default function ContactForm() {
 
   return (
     <form id="contact-form" className="form" noValidate onSubmit={handleSubmit}>
-      <h3 className="form__title">{contactForm.title}</h3>
+      <h3 className="form__title">{form.title}</h3>
 
       <div className="field">
         <label htmlFor="name" className="field__label">
-          {contactForm.labels.name}
+          {form.labels.name}
         </label>
         <input
           ref={nameRef}
@@ -180,7 +182,7 @@ export default function ContactForm() {
 
       <div className="field">
         <label htmlFor="email" className="field__label">
-          {contactForm.labels.email}
+          {form.labels.email}
         </label>
         <input
           ref={emailRef}
@@ -204,7 +206,7 @@ export default function ContactForm() {
 
       <div className="field">
         <label htmlFor="message" className="field__label">
-          {contactForm.labels.message}
+          {form.labels.message}
         </label>
         <textarea
           ref={messageRef}
@@ -237,12 +239,12 @@ export default function ContactForm() {
           aria-disabled={status === "sending"}
           aria-busy={status === "sending"}
         >
-          {status === "sending" ? contactForm.submitting : contactForm.submit}
+          {status === "sending" ? form.submitting : form.submit}
         </button>
         <div className="form__status" role="status" aria-live="polite" aria-atomic="true">
-          {status === "success" && <span className="form__status--success">{contactForm.success}</span>}
-          {status === "error" && <span className="form__status--error">{contactForm.sendError}</span>}
-          {status === "sending" && <span className="form__status--sending">{contactForm.submitting}</span>}
+          {status === "success" && <span className="form__status--success">{form.success}</span>}
+          {status === "error" && <span className="form__status--error">{form.sendError}</span>}
+          {status === "sending" && <span className="form__status--sending">{form.submitting}</span>}
         </div>
       </div>
     </form>

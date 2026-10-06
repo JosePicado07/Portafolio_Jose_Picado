@@ -1,7 +1,8 @@
 import type { CSSProperties } from "react";
-import { projects, projectsSection } from "@/content/en";
+import type { Dictionary } from "@/content/en";
 
-export default function Projects() {
+export default function Projects({ dict }: { dict: Dictionary }) {
+  const { projects, projectsSection, aria } = dict;
   const featured = projects.filter((project) => project.featured);
   const compact = projects.filter((project) => !project.featured);
 
@@ -32,7 +33,7 @@ export default function Projects() {
                     {project.title}
                   </h3>
                 </header>
-                <p className="case__stack" aria-label="Stack">
+                <p className="case__stack" aria-label={aria.stack}>
                   {project.stack.map((item, index) => (
                     <span key={item}>
                       {item}
@@ -62,7 +63,7 @@ export default function Projects() {
                 ) : null}
               </div>
               {project.proof.length ? (
-                <aside className="case__proof" aria-label="Proof">
+                <aside className="case__proof" aria-label={aria.proof}>
                   <ul className="proof-list">
                     {project.proof.map((item, proofIndex) => (
                       <li
@@ -88,7 +89,7 @@ export default function Projects() {
           ))}
         </div>
 
-        <ul className="rows" aria-label="Compact projects">
+        <ul className="rows" aria-label={aria.compactProjects}>
           {compact.map((project, rowIndex) => (
             <li
               key={project.id}
@@ -106,7 +107,7 @@ export default function Projects() {
                 ))}
               </p>
               {project.proof.length ? (
-                <div className="row__proof-group" aria-label="Proof">
+                <div className="row__proof-group" aria-label={aria.proof}>
                   {project.proof.map((item) => (
                     <p
                       key={item.label}

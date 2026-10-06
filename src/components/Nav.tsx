@@ -1,19 +1,27 @@
 "use client";
 
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
-import { nav, urls } from "@/content/en";
+import { useCallback, useEffect, useRef, useState } from "react";
+import LangToggle from "./LangToggle";
+import type { Dictionary, Lang } from "@/content/en";
 
 const HAIRLINE_AFTER_PX = 8;
 const PANEL_ID = "nav-disclosure";
 const SPY_IDS = ["#projects", "#skills", "#about", "#contact"];
 
-export default function Nav() {
+export default function Nav({
+  nav,
+  lang,
+  cvHref,
+}: {
+  nav: Dictionary["nav"];
+  lang: Lang;
+  cvHref: string;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [panelMounted, setPanelMounted] = useState(false);
   const [panelShown, setPanelShown] = useState(false);
   const [panelClosing, setPanelClosing] = useState(false);
-  const [language, setLanguage] = useState("EN");
   const [active, setActive] = useState<string | null>(null);
   const [bar, setBar] = useState<{ x: number; w: number } | null>(null);
   const linksRef = useRef<HTMLUListElement>(null);
@@ -135,27 +143,13 @@ export default function Nav() {
           />
         </nav>
 
-        <div className="lang" role="group" aria-label={nav.langGroupLabel}>
-          {nav.languages.map((option, index) => (
-            <Fragment key={option.code}>
-              {index > 0 ? (
-                <span className="lang__sep" aria-hidden="true">
-                  /
-                </span>
-              ) : null}
-              <button
-                type="button"
-                lang={option.code.toLowerCase()}
-                aria-pressed={language === option.code}
-                onClick={() => setLanguage(option.code)}
-              >
-                {option.code}
-              </button>
-            </Fragment>
-          ))}
-        </div>
+        <LangToggle
+          lang={lang}
+          languages={nav.languages}
+          groupLabel={nav.langGroupLabel}
+        />
 
-        <a className="btn btn--ghost nav__cv" href={urls.cv} download>
+        <a className="btn btn--ghost nav__cv" href={cvHref} download>
           <svg
             viewBox="0 0 16 16"
             fill="none"
@@ -209,7 +203,7 @@ export default function Nav() {
               </li>
             ))}
           </ul>
-          <a className="btn btn--ghost" href={urls.cv} download onClick={closeMenu}>
+          <a className="btn btn--ghost" href={cvHref} download onClick={closeMenu}>
             {nav.cvDownload}
           </a>
         </div>

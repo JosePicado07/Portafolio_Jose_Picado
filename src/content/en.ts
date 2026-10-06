@@ -3,7 +3,7 @@ export const projectsSection = {
   heading: "Pipelines that check their own work.",
   nextLinkText: "Discuss a similar problem →",
   nextLinkHref: "#contact",
-} as const;
+};
 
 export type Proof = {
   value: string;
@@ -88,25 +88,27 @@ export const skillsSection = {
   heading: "From raw source to an answer you can trust.",
   legend: "Stage measured by a verified result in Projects",
   provenSrText: "(measured by a verified result)",
-} as const;
+};
 
 export type ProjectTitle = (typeof _projects)[number]["title"];
 
-export type Tool = {
+export type Tool<P extends string = string> = {
   name: string;
-  projects: ProjectTitle[];
+  projects: readonly P[];
 };
 
-export type Stage = {
+export type Stage<P extends string = string> = {
   id: string;
   number: string;
   name: string;
   desc: string;
   proven: boolean;
-  tools: Tool[];
+  tools: readonly Tool<P>[];
 };
 
-export const stages: Stage[] = [
+export type Lang = "en" | "es";
+
+export const stages: readonly Stage[] = [
   {
     id: "ingest",
     number: "01",
@@ -159,7 +161,7 @@ export const stages: Stage[] = [
       },
     ],
   },
-] as const;
+] as const satisfies readonly Stage<ProjectTitle>[];
 
 
 
@@ -172,8 +174,8 @@ export const aboutSection = {
     "I always wanted to work in data. I trust numbers more than hunches, and I like seeing a project all the way through, to the point where the data is right and the customer is happy.",
     "I didn't start there, though. I tested Alexa features at Amazon and did technical sales at Emerson, then moved into EDI support at DXC, which is where I started working with data every day. After that I joined World Wide Technology as a data analyst and wrote most of the Python tools you see in Projects.",
     "I'm also finishing a software engineering degree at Universidad Cenfotec while I work, and I built a data pipeline for my own finances because I wanted to know the numbers were right. And yes, that's a penguin in the tab icon. I love penguins.",
-  ] as const,
-} as const;
+  ],
+};
 
 export type CareerItem = {
   when: string;
@@ -231,7 +233,7 @@ export const contactSection = {
     { label: "WhatsApp", link: "+506 8475 6191", href: "https://wa.me/50684756191" },
     { label: "CV", link: "Download CV (PDF)", href: "/cv/CV_Jose_Picado_2026.pdf", download: true },
   ],
-} as const;
+};
 
 export const contactForm = {
   title: "Send a message",
@@ -251,7 +253,7 @@ export const contactForm = {
     messageShort: "Message must be at least 10 characters.",
     messageLong: "Message must be 1000 characters or fewer.",
   },
-} as const;
+};
 
 export const footer = {
   links: [
@@ -260,12 +262,21 @@ export const footer = {
     { label: "Email", href: "mailto:jpicado011@gmail.com" },
   ],
   meta: "© 2026 José Picado · Costa Rica",
-} as const;
+};
 
 
 export const whatsAppFloat = {
   ariaLabel: "Message José on WhatsApp",
-} as const;
+};
+
+export const aria = {
+  stack: "Stack",
+  proof: "Proof",
+  compactProjects: "Compact projects",
+  skillsPipeline: "Skills pipeline",
+  contactChannels: "Contact channels",
+  footerLinks: "Footer links",
+};
 
 export const nav = {
   skipLink: "Skip to content",
@@ -287,7 +298,7 @@ export const nav = {
   cvDownload: "Download CV",
   menuOpen: "Open menu",
   menuClose: "Close menu",
-} as const;
+};
 
 export const hero = {
   id: "top",
@@ -297,7 +308,7 @@ export const hero = {
   sub: "I build data pipelines, and the validation systems that prove every load is correct before anyone relies on it.",
   ctaPrimary: "Book a 30-minute call",
   ctaSecondary: "See the work",
-} as const;
+};
 
 export const urls = {
   calendar: "https://cal.com/jose-picado-uieppc/30min",
@@ -306,4 +317,23 @@ export const urls = {
   whatsapp: "https://wa.me/50684756191",
   linkedin: "https://www.linkedin.com/in/josé-andrés-picado-corrales-a10a28173",
   github: "https://github.com/josepicado07",
+};
+
+export const en = {
+  nav,
+  hero,
+  urls,
+  projectsSection,
+  projects,
+  skillsSection,
+  stages,
+  aboutSection,
+  career,
+  contactSection,
+  contactForm,
+  footer,
+  whatsAppFloat,
+  aria,
 } as const;
+
+export type Dictionary = typeof en;

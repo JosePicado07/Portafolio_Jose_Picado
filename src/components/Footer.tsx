@@ -1,16 +1,13 @@
-"use client";
+import LangToggle from "./LangToggle";
+import type { Dictionary, Lang } from "@/content/en";
 
-import { footer, nav } from "@/content/en";
-import { useState } from "react";
-
-export default function Footer() {
-  const [language, setLanguage] = useState("EN");
-
+export default function Footer({ dict, lang }: { dict: Dictionary; lang: Lang }) {
+  const { footer, nav, aria } = dict;
   return (
     <footer className="footer" role="contentinfo">
       <div className="container">
         <div className="footer__inner">
-          <nav className="footer__links" aria-label="Footer links">
+          <nav className="footer__links" aria-label={aria.footerLinks}>
             {footer.links.map((link) => (
               <a
                 key={link.label}
@@ -23,24 +20,11 @@ export default function Footer() {
               </a>
             ))}
           </nav>
-          <div className="footer__lang" role="group" aria-label={nav.langGroupLabel}>
-            {nav.languages.map((option, index) => (
-              <span key={option.code}>
-                {index > 0 ? (
-                  <span className="lang__sep" aria-hidden="true">/</span>
-                ) : null}
-                <button
-                  type="button"
-                  lang={option.code.toLowerCase()}
-                  aria-pressed={language === option.code}
-                  onClick={() => setLanguage(option.code)}
-                  className="footer__lang-btn"
-                >
-                  {option.code}
-                </button>
-              </span>
-            ))}
-          </div>
+          <LangToggle
+            lang={lang}
+            languages={nav.languages}
+            groupLabel={nav.langGroupLabel}
+          />
           <p className="footer__meta">{footer.meta}</p>
         </div>
       </div>

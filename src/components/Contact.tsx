@@ -1,8 +1,9 @@
 import type { CSSProperties } from "react";
-import { contactSection, urls } from "@/content/en";
+import type { Dictionary } from "@/content/en";
 import ContactForm from "./ContactForm";
 
-export default function Contact() {
+export default function Contact({ dict }: { dict: Dictionary }) {
+  const { contactSection, urls, aria } = dict;
   return (
     <section className="contact" id="contact" aria-labelledby="contact-title">
       <div className="container">
@@ -29,7 +30,7 @@ export default function Contact() {
               </a>
             </div>
 
-            <ul className="channels" aria-label="Contact channels">
+            <ul className="channels" aria-label={aria.contactChannels}>
               {contactSection.channels.map((channel) => (
                 <li key={channel.label} className="channel">
                   <span className="channel__label">{channel.label}</span>
@@ -47,7 +48,7 @@ export default function Contact() {
             </ul>
           </div>
 
-          <ContactForm />
+          <ContactForm form={dict.contactForm} />
         </div>
       </div>
     </section>

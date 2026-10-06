@@ -1,7 +1,8 @@
 import type { CSSProperties } from "react";
-import { aboutSection, career } from "@/content/en";
+import type { Dictionary } from "@/content/en";
 
-export default function About() {
+export default function About({ dict }: { dict: Dictionary }) {
+  const { aboutSection, career } = dict;
   return (
     <section className="about" id="about" aria-labelledby="about-title">
       <div className="container">

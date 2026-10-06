@@ -185,23 +185,22 @@ button {
   letter-spacing: 0.1em;
 }
 
-.lang button {
-  background: none;
-  border: 0;
+.lang a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 8px 6px;
   min-width: 32px;
   min-height: 32px;
   color: var(--color-text-muted);
-  cursor: pointer;
   letter-spacing: inherit;
-  transition: color var(--motion-ui) var(--motion-ease);
 }
 
-.lang button:hover {
+.lang a:hover {
   color: var(--color-text-primary);
 }
 
-.lang button[aria-pressed="true"] {
+.lang a[aria-current="true"] {
   color: var(--color-signal-blue-text);
 }
 
@@ -531,10 +530,7 @@ html.webgl-ok .hero__poster {
 .footer__link:hover { color:var(--color-text-primary); }
 .footer__meta { color:var(--color-text-muted); font-size:0.875rem; }
 
-.footer__lang { display:flex; align-items:center; gap:8px; margin-top:24px; }
-.footer__lang-btn { background:none; border:0; padding:4px 8px; min-width:32px; min-height:32px; color:var(--color-text-muted); cursor:pointer; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; transition:color var(--motion-ui) var(--motion-ease); }
-.footer__lang-btn:hover { color:var(--color-text-primary); }
-.footer__lang-btn[aria-pressed="true"] { color:var(--color-signal-blue-text); }
+.footer .lang { justify-content:center; }
 .lang__sep { color:var(--color-border); }
 
 
@@ -704,7 +700,7 @@ html.webgl-ok .hero__poster {
 
   .row__proof {
     text-align: left;
-    white-space: nowrap;
+    white-space: normal;
   }
 
   .skills { padding-block: 64px; }

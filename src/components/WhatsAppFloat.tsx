@@ -1,9 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { whatsAppFloat, urls } from "@/content/en";
 
-export default function WhatsAppFloat() {
+export default function WhatsAppFloat({
+  href,
+  label,
+}: {
+  href: string;
+  label: string;
+}) {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
@@ -14,7 +19,7 @@ export default function WhatsAppFloat() {
       ([entry]) => {
         setHidden(entry.isIntersecting && entry.intersectionRatio >= 0.2);
       },
-      { root: null, threshold: [0, 0.2, 1] }
+      { root: null, threshold: [0, 0.2, 1] },
     );
 
     observer.observe(contactSection);
@@ -24,10 +29,10 @@ export default function WhatsAppFloat() {
   return (
     <a
       className={`wa-float${hidden ? " wa-float--hidden" : ""}`}
-      href={urls.whatsapp}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={whatsAppFloat.ariaLabel}
+      aria-label={label}
     >
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinejoin="round" aria-hidden="true">
         <path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z"/>
