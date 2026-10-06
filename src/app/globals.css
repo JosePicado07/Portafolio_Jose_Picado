@@ -521,6 +521,8 @@ html.webgl-ok .hero__poster {
 .form__status--sending { color:var(--color-text-secondary); }
 .btn--submit { width:100%; }
 @media (min-width: 768px) { .btn--submit { width:auto; } }
+.btn--submit[aria-disabled="true"] { opacity:0.6; cursor:progress; }
+.form__status:focus { outline:none; }
 .form__footer { display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }
 
 .footer { padding-block:64px; border-top:1px solid var(--color-border); }

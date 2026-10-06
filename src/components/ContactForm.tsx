@@ -73,8 +73,11 @@ export default function ContactForm({ form }: { form: Dictionary["contactForm"] 
     }
   }, [fields, form.errors]);
 
+  const statusRef = useRef<HTMLDivElement>(null);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (submittingRef.current) return;
 
     const errors: Record<FieldName, string> = {
       name: validateFieldValue("name", fields.name.value, form.errors),
@@ -136,9 +139,11 @@ export default function ContactForm({ form }: { form: Dictionary["contactForm"] 
         message: { value: "", error: "", touched: false },
       });
       setStatus("success");
+      statusRef.current?.focus({ preventScroll: true });
     } catch (err) {
       console.error("EmailJS send failed:", err);
       setStatus("error");
+      statusRef.current?.focus({ preventScroll: true });
     } finally {
       submittingRef.current = false;
     }
@@ -235,13 +240,19 @@ export default function ContactForm({ form }: { form: Dictionary["contactForm"] 
         <button
           type="submit"
           className="btn btn--ghost btn--submit"
-          disabled={status === "sending"}
           aria-disabled={status === "sending"}
           aria-busy={status === "sending"}
         >
           {status === "sending" ? form.submitting : form.submit}
         </button>
-        <div className="form__status" role="status" aria-live="polite" aria-atomic="true">
+        <div
+          className="form__status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          tabIndex={-1}
+          ref={statusRef}
+        >
           {status === "success" && <span className="form__status--success">{form.success}</span>}
           {status === "error" && <span className="form__status--error">{form.sendError}</span>}
           {status === "sending" && <span className="form__status--sending">{form.submitting}</span>}
