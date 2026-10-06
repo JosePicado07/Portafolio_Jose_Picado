@@ -11,6 +11,7 @@ colors:
   text-muted: "oklch(0.62 0.010 250)"
   border: "oklch(0.25 0.008 250)"
   surface-raised: "oklch(0.18 0.008 250)"
+  error: "oklch(0.72 0.14 25)"
 typography:
   display:
     fontFamily: "Geist, Inter, system-ui, sans-serif"
@@ -87,6 +88,9 @@ One hue, three roles. Each role is tuned so it passes AA where it's used.
 - **Secondary Text** (`text-secondary`): Subheads, project descriptions, supporting copy.
 - **Muted Text** (`text-muted`): Tech tags, metadata, captions. Passes AA at every size.
 
+### Feedback
+- **Error** (`error`, renders as #F07F77): form validation messages and the invalid-field border only. It is never decorative and never on a button. Each error is also stated in text, so color is not the only signal. Added 2026-10-05 for the Contact form.
+
 ### Contrast check (recomputed 2026-10-05, WCAG 2.x)
 | Pair | Ratio | Result |
 |---|---|---|
@@ -96,6 +100,7 @@ One hue, three roles. Each role is tuned so it passes AA where it's used.
 | Signal Text on Field / Raised | 8.0 / 7.6:1 | AA |
 | Primary Text label on CTA Blue | 4.9:1 | AA (pure #fff would be 5.7:1, but it's banned by the No Pure Values Rule) |
 | CTA Blue against Field (non-text) | 3.5:1 | Meets the 3:1 rule for UI components |
+| Error text on Field / Raised | 7.5 / 7.1:1 | AA |
 | Raised Surface (#0F1215) against Field | 1.05:1 | A deliberate subtle tonal step. It's a surface, not text. |
 
 ### Named Rules
