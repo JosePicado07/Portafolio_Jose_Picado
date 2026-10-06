@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { aboutSection, career } from "@/content/en";
 
 export default function About() {
@@ -5,14 +6,16 @@ export default function About() {
     <section className="about" id="about" aria-labelledby="about-title">
       <div className="container">
         <header className="about__header">
-          <p className="label about__label">{aboutSection.label}</p>
-          <h2 className="about__heading" id="about-title">
+          <p className="label about__label" data-reveal style={{ "--i": 0 } as CSSProperties}>
+            {aboutSection.label}
+          </p>
+          <h2 className="about__heading" id="about-title" data-reveal style={{ "--i": 1 } as CSSProperties}>
             {aboutSection.heading}
           </h2>
         </header>
 
         <div className="about__grid">
-          <div className="bio">
+          <div className="bio" data-reveal>
             {aboutSection.bio.map((paragraph, index) => (
               <p key={index} className={index === 0 ? "bio__lead" : "bio__text"}>
                 {paragraph}
@@ -23,8 +26,13 @@ export default function About() {
           <aside className="arc">
             <h3 className="arc__label">{aboutSection.careerLabel}</h3>
             <ol className="arc__list" aria-label={aboutSection.careerLabel}>
-              {career.map((item) => (
-                <li key={item.when} className={`arc__item${item.muted ? " arc__item--muted" : ""}`}>
+              {career.map((item, itemIndex) => (
+                <li
+                  key={item.when}
+                  className={`arc__item${item.muted ? " arc__item--muted" : ""}`}
+                  data-draw="x"
+                  style={{ "--i": itemIndex } as CSSProperties}
+                >
                   <span className="arc__when">{item.when}</span>
                   <div className="arc__role-org">
                     <span className={item.muted ? "arc__role arc__role--muted" : "arc__role"}>

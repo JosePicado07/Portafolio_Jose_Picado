@@ -167,7 +167,13 @@ export default function ContactForm() {
           className="field__input"
           {...getFieldProps("name")}
         />
-        <span id="name-error" className="field__error" role="alert" aria-live="polite">
+        <span
+          id="name-error"
+          className="field__error"
+          role="alert"
+          aria-live="polite"
+          data-empty={!(fields.name.touched && fields.name.error)}
+        >
           {fields.name.touched && fields.name.error ? fields.name.error : "\u00A0"}
         </span>
       </div>
@@ -185,7 +191,13 @@ export default function ContactForm() {
           className="field__input"
           {...getFieldProps("email")}
         />
-        <span id="email-error" className="field__error" role="alert" aria-live="polite">
+        <span
+          id="email-error"
+          className="field__error"
+          role="alert"
+          aria-live="polite"
+          data-empty={!(fields.email.touched && fields.email.error)}
+        >
           {fields.email.touched && fields.email.error ? fields.email.error : "\u00A0"}
         </span>
       </div>
@@ -202,7 +214,13 @@ export default function ContactForm() {
           {...getFieldProps("message")}
         />
         <div className="field__meta">
-          <span id="message-error" className="field__error" role="alert" aria-live="polite">
+          <span
+            id="message-error"
+            className="field__error"
+            role="alert"
+            aria-live="polite"
+            data-empty={!(fields.message.touched && fields.message.error)}
+          >
             {fields.message.touched && fields.message.error ? fields.message.error : "\u00A0"}
           </span>
           <span id="message-counter" className="counter">

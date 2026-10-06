@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist } from "next/font/google";
+import MotionObserver from "@/components/MotionObserver";
 import "./globals.css";
 
 const geist = Geist({
@@ -22,6 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geist.variable} antialiased`}>
+        <Script id="motion-ok" strategy="beforeInteractive">
+          {`if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-ok')`}
+        </Script>
+        <MotionObserver />
         {children}
       </body>
     </html>

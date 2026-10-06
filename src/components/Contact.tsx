@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { contactSection, urls } from "@/content/en";
 import ContactForm from "./ContactForm";
 
@@ -8,8 +9,10 @@ export default function Contact() {
         <div className="contact__grid">
           <div className="contact__copy">
             <header className="contact__header">
-              <p className="label contact__label">{contactSection.label}</p>
-              <h2 className="contact__heading" id="contact-title">
+              <p className="label contact__label" data-reveal style={{ "--i": 0 } as CSSProperties}>
+                {contactSection.label}
+              </p>
+              <h2 className="contact__heading" id="contact-title" data-reveal style={{ "--i": 1 } as CSSProperties}>
                 {contactSection.heading}
               </h2>
               <p className="contact__lead">{contactSection.lead}</p>

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { projects, projectsSection } from "@/content/en";
 
 export default function Projects() {
@@ -8,15 +9,23 @@ export default function Projects() {
     <section className="projects" id="projects" aria-labelledby="projects-title">
       <div className="container">
         <header className="projects__header">
-          <p className="label projects__label">{projectsSection.label}</p>
-          <h2 className="projects__heading" id="projects-title">
+          <p className="label projects__label" data-reveal style={{ "--i": 0 } as CSSProperties}>
+            {projectsSection.label}
+          </p>
+          <h2 className="projects__heading" id="projects-title" data-reveal style={{ "--i": 1 } as CSSProperties}>
             {projectsSection.heading}
           </h2>
         </header>
 
         <div className="projects__grid">
-          {featured.map((project) => (
-            <article key={project.id} className="case" aria-labelledby={`${project.id}-title`}>
+          {featured.map((project, index) => (
+            <article
+              key={project.id}
+              className="case"
+              aria-labelledby={`${project.id}-title`}
+              data-reveal
+              style={{ "--i": Math.min(index, 1) } as CSSProperties}
+            >
               <div className="case__body">
                 <header className="case__header">
                   <h3 className="case__title" id={`${project.id}-title`}>
@@ -55,8 +64,13 @@ export default function Projects() {
               {project.proof.length ? (
                 <aside className="case__proof" aria-label="Proof">
                   <ul className="proof-list">
-                    {project.proof.map((item) => (
-                      <li key={item.label} className="proof-item">
+                    {project.proof.map((item, proofIndex) => (
+                      <li
+                        key={item.label}
+                        className="proof-item"
+                        data-draw="x"
+                        style={{ "--i": proofIndex } as CSSProperties}
+                      >
                         <span
                           className={
                             item.verified ? "proof-value proof-value--verified" : "proof-value"
@@ -75,8 +89,13 @@ export default function Projects() {
         </div>
 
         <ul className="rows" aria-label="Compact projects">
-          {compact.map((project) => (
-            <li key={project.id} className="row">
+          {compact.map((project, rowIndex) => (
+            <li
+              key={project.id}
+              className="row"
+              data-draw="x"
+              style={{ "--i": rowIndex } as CSSProperties}
+            >
               <h3 className="row__title">{project.title}</h3>
               <p className="row__stack">
                 {project.stack.map((item, index) => (
