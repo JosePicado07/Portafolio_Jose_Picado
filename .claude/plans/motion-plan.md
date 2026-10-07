@@ -169,3 +169,9 @@ Add one global block to globals.css:
 - **Original note:** the P3-09 head-script rule. `motion-ok` is skipped when `location.hash` is set or when the navigation type is `reload` or `back_forward`. Verified in headless: a fresh navigation gets motion-ok=true, a reload gets false. Reviewing with F5, or via `/#section` links, therefore disables every section animation.
 - **Ruled out:** the OS reduced-motion setting (José's hero 3D animates) (Windows "Animation effects" off). In that case the hero also shows the static poster, and the site is behaving as designed.
 - **Proposed fix (next handoff):** drop the `reload`/`back_forward` exclusion. Keep the hash exclusion only if needed, and rely on MotionObserver's synchronous in-view stamping so restored mid-page content isn't hidden. Re-verify with: fresh load, F5 at the top, F5 mid-page, a `/#projects` deep link, and back/forward.
+
+## 12. Round 2 (2026-10-06, José: level "Calm")
+
+**Handoff:** `handoffs/P3-17-motion-polish.md`. Part A first fixes a P3-15b regression (blank hero on capable phones: `webgl-ok` hid the poster while HeroCanvas skipped WebGL on touch).
+- **Added:** mobile hero poster draw-in (CSS only, once, ≤ 1.4s); link underline grow + arrow nudge + WhatsApp press; form success hairline then Signal Blue text; EN/ES crossfade via cross-document View Transitions.
+- **Rejected:** nav hover underline (competes with the sliding active bar); hover on project rows (not links); anything scroll-scrubbed outside the hero.

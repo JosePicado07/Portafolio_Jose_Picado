@@ -13,8 +13,8 @@ Legend: ✅ verified · ⬜ to do · ⚠️ blocker / decision.
   - (a) Vercel only: turn off Pages after Gate 4, and check the course accepts a Vercel URL; or
   - (b) Keep Pages too: needs `output: "export"` + `basePath`, which drops the `next.config.ts` headers (CSP would move to a `<meta>` tag, and `frame-ancestors` is lost).
   Recommendation: (a), if the course allows it.
-- ⚠️ **Content decisions (José):** the calendar URL for "Book a call", plus a confirmed metric or scope marker for each of the 5 projects (Gate 3). Cards with neither show title + tech tag only.
-- ⬜ **EmailJS key rotation** (plan §7, blocking for public launch): the public key was rotated 2026-10-06 10:03 (P3-14). Confirm in the EmailJS dashboard that the old key no longer works.
+- ✅ **Content decisions:** calendar URL decided (`https://cal.com/jose-picado-uieppc/30min`, plan §8, already in `src/content/en.ts`). Card content for all 5 projects confirmed 2026-10-05 (`project-metrics.md`; Workday Conversions carries scope only). Clients appear by industry only. The reply-time line is left out by default.
+- ✅ **EmailJS key rotation:** DONE 2026-10-06 (plan §8). The new public key revokes the old one.
 
 ## 1. Code readiness
 

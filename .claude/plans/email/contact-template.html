@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="supported-color-schemes" content="dark">
+  <title>Nuevo mensaje de contacto</title>
+</head>
+<body style="margin:0; padding:0; background-color:#0A0A0A;">
+  <!-- Preheader: shows in the inbox list, hidden in the email -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all;">Nuevo mensaje de {{from_name}} desde el portafolio.</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0A0A0A" style="background-color:#0A0A0A;">
+    <tr>
+      <td align="center" style="padding:48px 16px;">
+
+        <table role="presentation" width="560" cellpadding="0" cellspacing="0" border="0" bgcolor="#0F1215" style="width:100%; max-width:560px; background-color:#0F1215; border:1px solid #1F2225; border-radius:4px;">
+
+          <!-- Header -->
+          <tr>
+            <td style="padding:32px 32px 16px 32px; font-family:Helvetica, Arial, sans-serif;">
+              <p style="margin:0 0 12px 0; font-size:12px; font-weight:bold; letter-spacing:1.2px; text-transform:uppercase; color:#49A9FF;">
+                <span style="color:#0066FF;">&#9679;</span>&nbsp; Signal ingested
+              </p>
+              <h1 style="margin:0; font-size:24px; line-height:30px; font-weight:bold; color:#EBEFF4;">Nuevo mensaje de contacto</h1>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding:0 32px 32px 32px; font-family:Helvetica, Arial, sans-serif;">
+              <p style="margin:0 0 20px 0; font-size:15px; line-height:24px; color:#9A9FA5;">Se ha registrado un nuevo mensaje a través del formulario del portafolio web:</p>
+
+              <!-- Name -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px 0;">
+                <tr>
+                  <td style="border-left:2px solid #1F2225; padding:0 0 0 12px;">
+                    <p style="margin:0 0 4px 0; font-size:11px; font-weight:bold; letter-spacing:1.1px; text-transform:uppercase; color:#82878C;">Nombre</p>
+                    <p style="margin:0; font-size:15px; line-height:22px; color:#EBEFF4;">{{from_name}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Email -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px 0;">
+                <tr>
+                  <td style="border-left:2px solid #1F2225; padding:0 0 0 12px;">
+                    <p style="margin:0 0 4px 0; font-size:11px; font-weight:bold; letter-spacing:1.1px; text-transform:uppercase; color:#82878C;">Email</p>
+                    <p style="margin:0; font-size:15px; line-height:22px;"><a href="mailto:{{from_email}}" style="color:#49A9FF; text-decoration:none;">{{from_email}}</a></p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Message -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0A0A0A" style="background-color:#0A0A0A; margin:0 0 32px 0;">
+                <tr>
+                  <td style="border-left:2px solid #49A9FF; padding:16px 20px;">
+                    <p style="margin:0 0 8px 0; font-size:11px; font-weight:bold; letter-spacing:1.1px; text-transform:uppercase; color:#82878C;">Mensaje</p>
+                    <p style="margin:0; font-size:14px; line-height:23px; color:#EBEFF4; white-space:pre-wrap;">{{message}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Button -->
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td bgcolor="#105FD9" style="background-color:#105FD9; border-radius:4px;">
+                    <a href="mailto:{{from_email}}" style="display:inline-block; padding:12px 24px; font-family:Helvetica, Arial, sans-serif; font-size:14px; font-weight:bold; color:#FFFFFF; text-decoration:none;">Responder a {{from_name}} &rarr;</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td bgcolor="#0A0A0A" style="background-color:#0A0A0A; border-top:1px solid #1F2225; padding:20px 32px; font-family:Helvetica, Arial, sans-serif;">
+              <p style="margin:0 0 4px 0; font-size:12px; line-height:18px; color:#82878C;"><strong style="color:#EBEFF4;">José Andrés Picado</strong> &mdash; notificación del sistema</p>
+              <p style="margin:0; font-size:12px; line-height:18px; color:#82878C;">Data Engineer | Costa Rica</p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
