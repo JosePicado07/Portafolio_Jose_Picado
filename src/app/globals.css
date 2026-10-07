@@ -514,8 +514,8 @@ html.webgl-ok .hero__poster {
 .field--hp { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
 .counter { font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-text-muted); }
 .form__title { font-weight:400; font-size:1.25rem; color:var(--color-text-primary); margin-bottom:24px; }
-.form__footer { display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }
-.form__status { min-height:1.25em; font-size:0.875rem; transition:opacity var(--motion-ui) var(--motion-ease); }
+.form__footer { display:flex; flex-wrap:wrap; gap:16px; align-items:center; }
+.form__status { display:flex; align-items:center; flex:1 1 12rem; min-width:0; min-height:1.65em; font-size:0.875rem; line-height:1.65; transition:opacity var(--motion-ui) var(--motion-ease); }
 .form__status:empty { opacity:0; }
 .form__status--success { color:var(--color-signal-blue-text); }
 .form__status--error { color:var(--color-error); }
@@ -524,7 +524,6 @@ html.webgl-ok .hero__poster {
 @media (min-width: 768px) { .btn--submit { width:auto; } }
 .btn--submit[aria-disabled="true"] { opacity:0.6; cursor:progress; }
 .form__status:focus { outline:none; }
-.form__footer { display:flex; flex-wrap:wrap; gap:16px; align-items:flex-start; }
 
 .footer { padding-block:64px; border-top:1px solid var(--color-border); }
 .footer__inner { display:flex; flex-direction:column; gap:32px; align-items:center; }
@@ -538,7 +537,8 @@ html.webgl-ok .hero__poster {
 
 
 .wa-float { position:fixed; right:24px; bottom:24px; z-index:50; display:flex; opacity:1; visibility:visible; transition:opacity var(--motion-ui) var(--motion-ease), visibility 0s linear 0s; }
-.wa-float__btn { width:52px; height:52px; border-radius:50%; background:var(--color-surface-raised); border:1px solid var(--color-border); display:flex; align-items:center; justify-content:center; color:var(--color-text-primary); text-decoration:none; transition:background-color var(--motion-ui) var(--motion-ease), border-color var(--motion-ui) var(--motion-ease); }
+.wa-float__btn { width:52px; height:52px; border-radius:50%; background:var(--color-surface-raised); border:1px solid var(--color-border); display:flex; align-items:center; justify-content:center; color:var(--color-text-primary); text-decoration:none; transition:background-color var(--motion-ui) var(--motion-ease), border-color var(--motion-ui) var(--motion-ease), transform 100ms var(--motion-ease); }
+.wa-float__btn:active { transform:scale(0.96); }
 .wa-float__btn:focus-visible { outline:2px solid var(--color-signal-blue); outline-offset:3px; }
 .wa-float__btn:hover { background:var(--color-border); }
 .wa-float__btn svg { width:24px; height:24px; }
@@ -860,8 +860,166 @@ html.motion-ok .pipeline[data-in] .stage[data-proven="true"] .stage__dot {
   }
 }
 
+/* ---------- P3-17: mobile hero poster draw-in (poster path only, once) ---------- */
+/* P3-17b: lines draw via transform (dasharray + pathLength breaks with
+   non-scaling-stroke). Total: rule line ends 820ms, last column lands
+   1230ms, signal ink ends 1380ms (<= 1.4s). */
+
+@keyframes hero-gate-draw {
+  from { transform: scaleY(0); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes hero-rule-draw {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes hero-cell-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes hero-signal-ink {
+  from { fill: var(--color-text-secondary); }
+  to { fill: var(--color-signal-blue); }
+}
+
+html.motion-ok:not(.webgl-ok) .hero__poster .hero__gate {
+  transform-box: fill-box;
+  transform-origin: top;
+  transform: scaleY(1);
+  animation: hero-gate-draw var(--motion-draw) var(--ease-draw) backwards;
+}
+
+html.motion-ok:not(.webgl-ok) .hero__poster .hero__gate--rule {
+  transform-origin: left;
+  transform: scaleX(1);
+  animation-name: hero-rule-draw;
+  animation-delay: calc(var(--stagger) * 2);
+}
+
+html.motion-ok:not(.webgl-ok) .hero__poster .hero__cell {
+  animation: hero-cell-in var(--motion-reveal) var(--motion-ease) backwards;
+  animation-delay: calc(var(--c, 0) * var(--stagger));
+}
+
+html.motion-ok:not(.webgl-ok) .hero__poster .hero__cell.is-signal {
+  animation:
+    hero-cell-in var(--motion-reveal) var(--motion-ease) backwards,
+    hero-signal-ink var(--motion-micro) var(--motion-ease) backwards;
+  animation-delay:
+    calc(var(--c, 0) * var(--stagger)),
+    calc(var(--c, 0) * var(--stagger) + var(--motion-reveal));
+}
+
+/* ---------- P3-17: hover / press details (interactive elements only) ---------- */
+
+.projects__link,
+.channel__link,
+.footer__link {
+  position: relative;
+}
+
+.projects__link::after,
+.channel__link::after,
+.footer__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--color-text-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--motion-ui) var(--motion-ease);
+  pointer-events: none;
+}
+
+.projects__link:hover::after,
+.projects__link:focus-visible::after,
+.channel__link:hover::after,
+.channel__link:focus-visible::after,
+.footer__link:hover::after,
+.footer__link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.projects__link .arrow {
+  display: inline-block;
+  transition: transform var(--motion-ui) var(--motion-ease);
+}
+
+.projects__link:hover .arrow,
+.projects__link:focus-visible .arrow {
+  transform: translateX(3px);
+}
+
+/* ---------- P3-17: form success signal (hairline draw, then Signal Blue) ---------- */
+
+.form__footer {
+  position: relative;
+}
+
+.form__footer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 1px;
+  background: var(--color-signal-blue-text);
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.form__footer[data-status="success"]::after {
+  transform: scaleX(1);
+  transition: transform var(--motion-draw) var(--ease-draw);
+}
+
+@keyframes form-success-ink {
+  from { color: var(--color-text-primary); }
+  to { color: var(--color-signal-blue-text); }
+}
+
+.form__footer[data-status="success"] .form__status--success {
+  animation: form-success-ink var(--motion-micro) var(--motion-ease) backwards;
+  animation-delay: var(--motion-draw);
+}
+
+/* ---------- P3-17b: reserve 2-line status height where it wraps ---------- */
+/* The 2-col contact grid (>= 1024px) narrows the form column, so the success
+   text wraps to 2 lines up to ~1170px (ES). Reserve the height so the footer
+   never grows when the status appears. 1-col widths and >= 1200px fit one
+   line and stay as they are. */
+
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .form__status {
+    min-height: calc(1.65em * 2);
+  }
+}
+
+/* ---------- P3-17: EN/ES crossfade (cross-document View Transitions, zero JS) ---------- */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--motion-ui);
+  animation-timing-function: var(--motion-ease);
+}
+
 /* Reduced motion: final states, instant switches, color-only feedback */
 @media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+
   html {
     scroll-behavior: auto;
   }

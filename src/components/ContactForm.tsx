@@ -272,10 +272,10 @@ export default function ContactForm({ form }: { form: Dictionary["contactForm"] 
         />
       </div>
 
-      <div className="form__footer">
+      <div className="form__footer" data-status={status}>
         <button
           type="submit"
-          className="btn btn--ghost btn--submit"
+          className="btn btn--primary btn--submit"
           aria-disabled={status === "sending"}
           aria-busy={status === "sending"}
         >

@@ -125,8 +125,9 @@ export default function Projects({ dict }: { dict: Dictionary }) {
         </ul>
 
         <footer className="projects__next">
-          <a className="projects__link" href={projectsSection.nextLinkHref}>
-            {projectsSection.nextLinkText}
+          <a className="projects__link" href={projectsSection.nextLinkHref} aria-label={projectsSection.nextLinkText}>
+            {projectsSection.nextLinkText.replace(/\s*→\s*$/, "")}
+            <span className="arrow" aria-hidden="true"> →</span>
           </a>
         </footer>
       </div>

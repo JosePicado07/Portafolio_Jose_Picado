@@ -55,8 +55,11 @@ export default function HeroPoster() {
   const squareParts: string[] = [];
   for (const [key, status] of cells) {
     const [x, y] = key.split(",").map(Number);
+    const c = Math.max(0, Math.min(COLS - 1, Math.round((x - TABLE_X0) / CELL)));
     squareParts.push(
-      `<rect x="${round(x - 0.025)}" y="${round(-y - 0.025)}" width="0.05" height="0.05" fill="${
+      `<rect x="${round(x - 0.025)}" y="${round(-y - 0.025)}" width="0.05" height="0.05" class="${
+        status ? "hero__cell is-signal" : "hero__cell"
+      }" style="--c:${c}" fill="${
         status ? "var(--color-signal-blue)" : "var(--color-text-secondary)"
       }"/>`,
     );
@@ -101,6 +104,7 @@ export default function HeroPoster() {
             y2={round(tableH / 2 + 0.3)}
             strokeWidth={1}
             vectorEffect="non-scaling-stroke"
+            className="hero__gate"
           />
           <line
             x1={round(TABLE_X0 - 0.12)}
@@ -109,6 +113,7 @@ export default function HeroPoster() {
             y2={round(-(tableH / 2 + 0.18))}
             strokeWidth={1}
             vectorEffect="non-scaling-stroke"
+            className="hero__gate hero__gate--rule"
           />
         </g>
       </svg>

@@ -9,7 +9,7 @@ const geist = Geist({
   fallback: ["Inter", "system-ui", "sans-serif"],
 });
 
-const HEAD_SCRIPT = `try{var d=document.documentElement,m=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!m)d.classList.add('motion-ok');if(!m&&(navigator.hardwareConcurrency||8)>4&&(navigator.deviceMemory||8)>4&&!(navigator.connection&&navigator.connection.saveData)){try{var c=document.createElement('canvas');if(c.getContext('webgl2')||c.getContext('webgl'))d.classList.add('webgl-ok')}catch(e){}}}catch(e){}`;
+const HEAD_SCRIPT = `try{var d=document.documentElement,m=matchMedia('(prefers-reduced-motion: reduce)').matches;if(!m)d.classList.add('motion-ok');if(!m&&!matchMedia('(pointer: coarse)').matches&&(navigator.hardwareConcurrency||8)>4&&(navigator.deviceMemory||8)>4&&!(navigator.connection&&navigator.connection.saveData)){try{var c=document.createElement('canvas');if(c.getContext('webgl2')||c.getContext('webgl'))d.classList.add('webgl-ok')}catch(e){}}}catch(e){}`;
 
 export default function RootShell({
   lang,
